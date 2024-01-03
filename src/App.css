@@ -98,7 +98,7 @@ img {
   width: 30vw; /* Ajusta el ancho para que ocupe todo el ancho del viewport */
   height: auto; /* Mantiene la proporción original de la imagen */
   border: 5px solid #fff; /* Añade un borde blanco para mayor contraste */
-  border-radius: 50%; /* Hace que la imagen sea circular, ajusta según lo desees */
+  border-radius: 50%; /* Hace que la imagen sea circular */
   transform: translateY(-300px);
   object-fit: cover; /* Mantiene la proporción original de la imagen */
 }
@@ -130,7 +130,7 @@ img {
   width: 13.5vw; /* Ajusta el ancho */
   height:fit-content; /* Mantiene la proporción original de la imagen */
   border: 5px solid #fff; /* Añade un borde blanco para mayor contraste */
-  border-radius: 50%; /* Hace que la imagen sea circular, ajusta según lo desees */
+  border-radius: 50%; /* Hace que la imagen sea circular */
   margin-left: 110px;
   margin-right: 95px; /* Ajusta la cantidad de espacio entre imágenes */
 }
@@ -223,7 +223,7 @@ img {
   text-align:center;
 }
 #workWith .subseccion {
-  max-width: 250px; /* Ajusta el ancho máximo de cada subsección según tus necesidades */
+  max-width: 250px; /* Ajusta el ancho máximo de cada subsección */
   margin: 20px; /* Ajusta el espacio entre las subsecciones */
   display: flex;
   flex-direction: column;
@@ -235,11 +235,11 @@ img {
   height: 50px;
 }
 #workWith .subseccion h2 {
-  font-size: 20px; /* Puedes ajustar el tamaño del texto según tus preferencias */
+  font-size: 20px;
   margin-bottom: 35px; /* Ajusta la cantidad de espacio entre el título y el párrafo */
 }
 #workWith .subseccion p {
-  font-size: 16px; /* Puedes ajustar el tamaño del texto según tus preferencias */
+  font-size: 16px;
 }
 #emergency {
   display: flex;
@@ -259,7 +259,7 @@ img {
 .segundoColor {
   width: 100%;
   box-sizing: border-box;
-  flex-direction: column; /* Cambia esto a column para que los elementos se apilen verticalmente */
+  flex-direction: column; /* Para que los elementos se apilen verticalmente */
   flex: 1;
   height: 100px;
   display: flex;
@@ -294,7 +294,7 @@ img {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  margin-bottom: 15px; /* Ajusta el margen inferior según tus necesidades */
+  margin-bottom: 15px; 
 }
 .segundoColor {
   background-color: #7D7EAC;
@@ -321,7 +321,7 @@ img {
   border-radius: 30px;
   text-decoration:none;
   position: absolute;
-  bottom: 35%; /* Ajusta según tu preferencia para la distancia desde el margen inferior */
+  bottom: 35%; 
   left: 34%;
   z-index: 2;
 }
