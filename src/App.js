@@ -83,11 +83,24 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
     <p>Esta modalidad permite un chat en vivo como sesion, a traves de WhatsApp ya sea por mensajes o audios</p>
   </div>
 </div>
-        </section>
-  <section id="appointments">
-          <AppointmentForm />
-      <a href="URL_DE_TU_CITA" class="cita-button">Programa tu cita ahora</a>
-        </section>
+</section>
+<section id="appointments">
+  <AppointmentForm />
+  <a href="URL_DE_TU_CITA" class="cita-button">Programa tu cita ahora</a>
+</section>
+<div id='myModal' className='modal'>
+  <div className='modal-contenido'>
+    <h1>Formulario de cita</h1>
+    <form action='paginas_citas.php' method='post'>
+      <input type="text" name="nombre" placeholder="Nombre y apellido"></input>
+      <input type="tel" name="telefono" placeholder="Teléfono"></input>
+      <input type="email" name="email" placeholder="Correo electrónico"></input>
+      <input type="date" name="fecha" placeholder="Fecha"></input>
+      <input type="time" name="hora" placeholder="Hora"></input>
+      <input type="submit" value="Enviar"></input>
+    </form>
+  </div>
+</div>
   <section id="videos">
           <EducationalVideos />
         </section>

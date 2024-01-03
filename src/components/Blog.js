@@ -5,7 +5,7 @@ import React from 'react';
 const Blog = () => {
   return (
     <div>
-      <h2>Doctora Maria Bonfilio</h2>
+      <h2>Doctora Maria Bonfiglio</h2>
       <p></p>
       <style>
         {`
