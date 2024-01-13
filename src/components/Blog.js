@@ -19,4 +19,5 @@ const Blog = () => {
 
 export default Blog;
 
+// "@babel/plugin-proposal-private-property-in-object": "^7.21.11" = Package.json
 // font-family: Avantgarde, TeX Gyre Adventor, URW Gothic, Lsans-serif

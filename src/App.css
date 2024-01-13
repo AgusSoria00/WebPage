@@ -62,12 +62,6 @@ img {
   min-width: 100px;
   min-height: 100px;
 }
-.cita-button {
-  cursor: pointer;
-}
-.cita-button {
-  cursor: pointer;
-}
 #blogFondo {
   position: relative;
   height: 100vh;
@@ -192,12 +186,14 @@ img {
   font-size: 30px;
   font-family: 'Titillium Web', sans-serif;
   margin-top: 70px; /* Agrega espacio en la parte superior del h3 */
+  color: black;
 }
 #appointments > div > h2 {
   font-size: 30px;
   font-family: 'Titillium Web', sans-serif;
   margin: 0 auto; /* Centra horizontalmente el texto y elimina el margen */
   white-space: normal;
+  color: purple;
 }
 .cita-button {
   display: inline-block;
@@ -207,13 +203,54 @@ img {
   border-radius: 30px;
   text-decoration: none;
   position: relative; /* Cambiado a relative para mejor comportamiento responsivo */
-  bottom: -35vh; /* Usa unidades relativas para la posición vertical */
+  bottom: -110%; /* Usa unidades relativas para la posición vertical */
   left: 50%;
-  transform: translateX(-50%); /* Centra horizontalmente el botón */
+  transform: translateX(-60%); /* Centra horizontalmente el botón */
   z-index: 1;
 }
 .cita-button:hover {
   background-color: #8E39A4;
+}
+.cita-button {
+  cursor: pointer;
+  position: relative;
+}
+#videos {
+  text-align: center;
+  margin-top: 20px;
+}
+.video-gallery {
+  display: flex;
+  align-items: center;
+}
+.video-container {
+  display: flex;
+  align-items: center;
+  width: 70%; /* Ajusta según tu diseño */
+  margin: 0 auto;
+  overflow: hidden; /* Evita que los elementos se salgan del contenedor */
+}
+.video-item {
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  width: 25%; /* Ajusta según tu diseño */
+}
+.video-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.video-item.slide-right {
+  transform: translateX(100%);
+}
+.video-item.slide-left {
+  transform: translateX(-100%);
+}
+button {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
 }
 #workWith #parteArriba {
   display: flex;
@@ -361,15 +398,160 @@ img {
 #contacts {
   display: grid;
   background-color: #EAEAEA;
-  padding: 10px 50px 20px;
+  padding: 10px 20px 20px;
 }
-#contacts .columnas{
+
+#contacts .columnas {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+  gap: 15px; /* Ajusta el espacio entre las columnas */
+  align-items: flex-start; /* Centra los elementos horizontalmente */
+  text-align: left;
+  margin: 10px;
+}
+
+#contacts p {
+  margin: 6px; /* Elimina el margen predeterminado de los párrafos */
+}
+
+#contacts .iconos {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start; /* Alinea los íconos en el centro verticalmente */
+}
+
+#contacts .iconos svg {
+  margin-bottom: 10px; /* Ajusta el espacio entre los íconos */
+  width: 25px; /* Ajusta el ancho del ícono */
+  height: 25px; /* Ajusta la altura del ícono */
+}
+
+
+/* VENTANA MODAL */
+#btn-modal{
+  display: none;
+}
+.container-modal{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0; left: 0;
+  background-color: rgba(144, 148, 150, 0,8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+#btn-modal:checked ~ .container-modal{
+  display: flex;
+}
+.content-modal{
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #ffff;
+  border-radius: 4px;
+}
+.content-modal h2{
+  margin-bottom: 15px;
+}
+.content-modal p{
+  padding: 15px 0px;
+  border-top: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+}
+.content-modal .btn-cerrar{
+  display: flex;
+  justify-content: flex-start;
+  grid-column: 1;
+}
+.container-modal .btn-cerrar label{
+  padding: 7px 10px;
+  background-color: #5488a3;
+  color:#fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.container-modal .btn-cerrar label:hover{
+  background-color: #185E83;
+}
+.cerrar-modal{
+  height: 100vh;
+  position:absolute;
+  top:0; left: 0;
+  z-index: -1;
+}
+
+/* SIGUIENTE VENTANA MODAL */
+.titulo-modal{
+  font-size: 1.25rem;
+  color: black;
+}
+.modal-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px; /* Ajusta el espacio entre las columnas */
-  align-items:flex-start; /* Centra los elementos horizontalmente */
+  grid-column-gap: 20px;
+  grid-row-gap: 5px;
+}
+
+.campo-label {
+  grid-column: 1;
   text-align: left;
 }
+
+.campo-input{
+  grid-column: 2;
+}
+
+.modal-submit{
+  width: 35%;
+  display: flex;
+  justify-content: flex-end; 
+  grid-column: 2;
+  align-self: end;
+  padding: 7px 10px;
+  background-color: #5488a3;
+  color:#fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.modal-submit :hover{
+  background-color: #185E83;
+}
+.cerrar-enviar{ 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+}
+.advertencia {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.mensaje {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.botones {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
+  z-index: 1000; /* Z-index alto para que aparezca sobre otros elementos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media (max-width: 768px) {
   .blogFondo .perfil img {

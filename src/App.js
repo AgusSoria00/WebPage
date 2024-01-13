@@ -4,10 +4,16 @@ import AppointmentForm from './components/AppointmentForm';
 import PsychologyArticles from './components/PsychologyArticles';
 import EducationalVideos from './components/EducationalVideos';
 import EmergencySection from './components/EmergencySection';
-import Contact from './components/Contact';
+import { redirectToSocialMedia } from './components/Contact';
 import WorkWith from './components/WorkWith';
 import HowItWork from './components/HowItWork';
+import Modal from './components/modal';
+import CustomModal from './components/modalEmergency';
 import '../src/App.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faYoutube, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+
+
 
 const App = () => {
   return ( 
@@ -56,7 +62,7 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
         <p>Puede realizar su consulta de forma presencial o virtual, 
           mediante una videollamada de alta calidad y confidencialidad.</p>
         <p>Solo queda comenzar la sesion y empieza a cambiar tu vida. 
-          Se abono durante el mismo dia de consulta.</p>
+        Se abona previamente la sesión  50€ el tiempo de la misma será  mínimo una hora  o lo necesario en cada caso.</p>
       </div>
         </section>
   <section id="workWith">
@@ -86,7 +92,7 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
 </section>
 <section id="appointments">
   <AppointmentForm />
-  <a href="URL_DE_TU_CITA" class="cita-button">Programa tu cita ahora</a>
+  <Modal />
 </section>
   <section id="videos">
           <EducationalVideos />
@@ -113,9 +119,9 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
     <div class='casillero2'>
     <label for="comentarios4">Consulta</label>
         <textarea id="comentarios4" name="comentarios4" rows="8"></textarea>
+    </div>       
+      <CustomModal />
     </div>
-    <a href="URL ENVIAR MENSAJE" class="enviar-button">Enviar</a>        
-          </div>
         </section>
   <section id="articles">
           <PsychologyArticles />
@@ -143,17 +149,28 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
   </section>
       </main>
       <section id="contacts">
-          <Contact />
       <h3>Informacion de contacto</h3>
-      <footer className='columnas'>
-      <p>Direccion: 1st Industria, calle A N° 1234</p>
-      <p>Facebook</p>
-      <p>Telefono: +34 680 39 26 97</p>
-      <p>Instragram</p>
+      <footer id='contacts'>
+  <div className='columnas'>
+    <div>
+      <p>Dirección: 1st Industria, calle A N° 1234</p>
+      <p>Teléfono: +34 680 39 26 97</p>
       <p>Email: support@corporate.cc</p>
-      <p>Youtube</p>
       <p>Horarios de atención: Lunes a Sábados de 09:00 a 21:00. Domingos solo urgencias.</p>
-      </footer> 
+    </div>
+    <div className='iconos'>
+    <FontAwesomeIcon icon={faYoutube} onClick={() => redirectToSocialMedia('youtube')} />
+      <FontAwesomeIcon icon={faInstagram} onClick={() => redirectToSocialMedia('instagram')} />
+      <FontAwesomeIcon icon={faFacebook} onClick={() => redirectToSocialMedia('facebook')} />
+    </div>
+    <div className='iconos'>
+      <p onClick={() => redirectToSocialMedia('facebook')}>Facebook</p>
+      <p onClick={() => redirectToSocialMedia('youtube')}>Youtube</p>
+      <p onClick={() => redirectToSocialMedia('instagram')}>Instagram</p>
+    </div>
+  </div>
+</footer>
+
         </section>
     </div>
   );
