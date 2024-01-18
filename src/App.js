@@ -20,7 +20,7 @@ const App = () => {
     <div>
       <nav>
         <ul>
-          <li><a href="#blog">Blog Personal</a></li>
+          <li><a href="#blog">Inicio</a></li>
           <li><a href="#appointments">Pedir Citas</a></li>
           <li><a href="#videos">Videos Informativos</a></li>
           <li><a href="#emergency">Urgencia</a></li>

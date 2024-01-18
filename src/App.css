@@ -483,6 +483,14 @@ button {
   z-index: -1;
 }
 
+.date-picker {
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 /* SIGUIENTE VENTANA MODAL */
 .titulo-modal{
   font-size: 1.25rem;

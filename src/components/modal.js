@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../App.css';
+import Calendar from './Calendar.js';
 
 const Modal = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
   const modalRef = useRef();
 
   const handleClick = () => {
@@ -13,6 +16,20 @@ const Modal = () => {
   const handleClose = () => {
     setModalVisible(false);
     document.body.style.overflow = 'auto';
+  };
+
+  const handleSelectDate = (date) => {
+    setSelectedDate(date);
+    setDatePickerVisible(false);
+  };
+
+  const handleSelectTime = (time) => {
+    // Implementa la lógica necesaria para manejar la selección de la hora
+    console.log('Hora seleccionada:', time);
+  };
+
+  const handleDateClick = () => {
+    setDatePickerVisible(!datePickerVisible);
   };
 
   useEffect(() => {
@@ -75,12 +92,19 @@ const Modal = () => {
     <input type="email" name="email" id="email" required />
   </div>
   <div className="campo-label">
-    <label htmlFor="fecha">Fecha</label>
-  </div>
-  <div className="campo-input">
-    <input type="date" name="fecha" id="fecha" required />
-  </div>
-  <div className="campo-label">
+        <label htmlFor="fecha">Fecha</label>
+      </div>
+      <div className="campo-input">
+        <input type="text" name="fecha" id="fecha" readOnly onClick={handleDateClick} value={selectedDate} required />
+        {datePickerVisible && (
+          <div className="date-picker">
+            {/* Contenido del selector de fechas */}
+            <Calendar onSelectDate={handleSelectDate} onSelectTime={handleSelectTime} />
+
+          </div>
+        )}
+      </div>
+      <div className="campo-label">
     <label htmlFor="hora">Hora</label>
   </div>
   <div className="campo-input">
@@ -104,4 +128,3 @@ const Modal = () => {
 };
 
 export default Modal;
-
