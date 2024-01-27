@@ -62,6 +62,8 @@ img {
   min-width: 100px;
   min-height: 100px;
 }
+
+/* PARTE BLOG */
 #blogFondo {
   position: relative;
   height: 100vh;
@@ -78,66 +80,81 @@ img {
   background-size: cover;
   filter: blur(3px);
   opacity: 0.85;
-  transition: filter 0.5s; /* Agrega una transición suave para el cambio de filtro */
+  transition: filter 0.5s; 
 }
 #blogFondo:hover::before {
-  filter: blur(8px); /* Cambia el valor del desenfoque al pasar el cursor sobre el div */
+  filter: blur(8px);
   opacity: 0.75;
 }
 #blogFondo .perfil {
   position: absolute;
-  z-index: 0; /* Asegura que el perfil esté sobre el fondo */
+  z-index: 0; 
 }
 #blogFondo .perfil img {
-  width: 30vw; /* Ajusta el ancho para que ocupe todo el ancho del viewport */
-  height: auto; /* Mantiene la proporción original de la imagen */
+  width: 30vw; 
+  height: auto; 
   border: 5px solid #fff; /* Añade un borde blanco para mayor contraste */
-  border-radius: 50%; /* Hace que la imagen sea circular */
-  transform: translateY(-300px);
+  border-radius: 50%; 
+  transform: translateY(-80%);
   object-fit: cover; /* Mantiene la proporción original de la imagen */
 }
 #blogFondo .texto1 {
   color: black;
-  font-size: 18px;
+  font-size: 20px;
   filter: blur(0px);
-  width: 50vw; /* Ajusta el ancho para que ocupe todo el ancho del viewport */
+  width: 50vw; 
   font-family: 'Quicksand', sans-serif;
-  display: flexbox;
-  justify-content: center; /* Centra el texto horizontalmente */
-  transform: translateX(500px);
+  justify-content: center; 
+  transform: translate(70%, 20%);
   word-spacing: 1px;
   line-height: 1.5;
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 0px;
 }
+
+/* PARTE DE COMO FUNCIONA */
+#howItWork .contenedor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; 
+  align-items: center;
+}
+
 #howItWork h2 {
-  /*background-image: url(imagenes/imagenFondo.jpeg); */
   font-size: 30px;
   font-family: 'Titillium Web', sans-serif;
+  text-align: center;
+  grid-column: span 3; 
 }
+
 #howItWork p {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   text-align: center;
 }
+
+#howItWork .agenda .image-container {
+  text-align: center; 
+  grid-column: span 1;
+  margin: 0 15px; 
+}
+
 #howItWork .agenda img {
-  width: 13.5vw; /* Ajusta el ancho */
-  height:fit-content; /* Mantiene la proporción original de la imagen */
-  border: 5px solid #fff; /* Añade un borde blanco para mayor contraste */
-  border-radius: 50%; /* Hace que la imagen sea circular */
-  margin-left: 110px;
-  margin-right: 95px; /* Ajusta la cantidad de espacio entre imágenes */
+  width: 20%; 
+  height: auto; 
+  border: 5px solid #fff; 
+  border-radius: 50%; 
 }
-#howItWork .agenda img:last-child {
-  margin-right: 0; /* Elimina el margen derecho para la última imagen */
-}
+
 #howItWork .subtitulos {
   display: grid;
-  grid-template-columns: repeat(3, 2fr);
-  gap: 15px / 100vw; /* Ajusta el espacio entre las columnas */
-  align-items: center; /* Centra los elementos horizontalmente */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; 
+  align-items: center; 
   text-align: center;
 }
+
+/* PEDIR CITAS */
+
 #appointments::before {
   content: "";
   position: absolute;
@@ -161,7 +178,7 @@ img {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos hijos */
+  align-items: center; 
 }
 #appointments > div {  
   position: absolute;
@@ -219,31 +236,19 @@ img {
   text-align: center;
   margin-top: 20px;
 }
+
 .video-gallery {
   display: flex;
   align-items: center;
 }
-.video-container {
-  display: flex;
-  align-items: center;
-  width: 70%; /* Ajusta según tu diseño */
-  margin: 0 auto;
-  overflow: hidden; /* Evita que los elementos se salgan del contenedor */
-}
+
 .video-item {
   opacity: 0.5;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  width: 25%; /* Ajusta según tu diseño */
+  transition: opacity 0.3s ease-in-out;
 }
+
 .video-item.active {
   opacity: 1;
-  transform: translateX(0);
-}
-.video-item.slide-right {
-  transform: translateX(100%);
-}
-.video-item.slide-left {
-  transform: translateX(-100%);
 }
 button {
   font-size: 20px;
@@ -561,85 +566,304 @@ button {
 }
 
 
+/* MEDIA QUERIES */
+
+/* BLOG */
 @media (max-width: 768px) {
-  .blogFondo .perfil img {
-    width: 100%;
+  #blogFondo .perfil img {
+    display: none; 
+  }
+  #blogFondo .texto1 {
+    width: 80vw; 
+    transform: translate(0%, 35%);
+  }
+  #blogFondo h2 {
+    font-size: 25px;
+    padding-bottom: 5%;
   }
 }
-.blogFondo .perfil img {
-  width: 100%;
-  @media (max-width: 768px) {
-    width: 30vw;
-  }
-}
-img {
-  width: 100%;
-
-  @media (max-width: 768px) {
-    width: 50%;
-  }
-}
-.contenedor {
-  margin: 0 10px;
-
-  @media (max-width: 768px) {
-    margin: 0 5px;
-  }
-}
-.elemento {
-  display: block;
-
-  @media (max-width: 768px) {
+@media (max-width: 576px) {
+  #blogFondo .perfil img {
     display: none;
   }
+  #blogFondo .texto1 {
+    width: 82vw; 
+    transform: translate(-4%, 25%); 
+    font-size: 16px;
+  }
+  #blogFondo h2 {
+    font-size: 17px;
+    
+  }
+}
+@media (max-width: 992px) {
+  #blogFondo .perfil img {
+    width: 35%;
+    transform: translate(0, -140%);
+  }
+  #blogFondo .texto1 {
+    position: relative;
+    top: -17%;
+    font-size: 17px;
+  }
+  #blogFondo h2 {
+    font-size: 28px;
+    padding-bottom: 5%;
+  }
 }
 
-/* Media queries */
+/* HOWITWORK */
+@media (max-width: 992px) {
+  #howItWork .agenda {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  #howItWork .image-container img {
+    width: 25%; 
+  }
+
+  #howItWork .subtitulos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; 
+  }
+}
+
 @media (max-width: 768px) {
+  #howItWork .agenda {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; /* Ajusta el espacio entre las columnas */
+    text-align: center; /* Centra los elementos en cada columna */
+  }
 
+  #howItWork .agenda img {
+    width: 30%; /* Ocupa el ancho completo de su contenedor */
+  }
 
-  /* Header */
-  header {
-    height: 100vh;
-    background-image: none;
-    color: #fff;
+  #howItWork .subtitulos {
+    width: 100%;
     text-align: center;
   }
 
-
-  /* Nav */
-  nav {
+  #howItWork .subtitulos h3,
+  #howItWork .subtitulos p {
+    margin-bottom: 5px; /* Ajusta el espacio entre los elementos h3 y p */
+  }
+}
+@media (max-width: 576px) {
+  #howItWork .agenda {
+    flex-direction: column; 
     display: none;
   }
-
-
-  /* Main */
-  main {
-    padding: 20;
+  #howItWork .subtitulos {
+    max-width: 100%;
+    gap: 20px; 
+  }
+  #howItWork .subseccion:nth-child(odd) {
+    order: 1; 
+  }
+  #howItWork .subseccion:nth-child(even) {
+    order: 2; 
+  }
+  #howItWork .subseccion:nth-child(2n+1) {
+    margin-bottom: 20px;
+  }
   }
 
+/* WORKWITH */
+@media (max-width: 768px) {
+  #workWith #parteArriba {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; 
+    gap: 5px; 
+  }
+  #workWith .subseccion {
+    max-width: calc(50% - 5px);
+    margin: 5px; 
+  }
+}
+@media (max-width: 400px) {
+  #workWith #parteArriba {
+    flex-direction: column; 
+  }
+  #workWith .subseccion {
+    max-width: 100%; 
+  }
+  #workWith .subseccion:nth-child(odd) {
+    order: 1; 
+  }
+  #workWith .subseccion:nth-child(even) {
+    order: 2; 
+  }
+  #workWith .subseccion:nth-child(2n+1) {
+    margin-bottom: 20px;
+  }
+}
 
-  /* Section */
-  section {
+/* APPOINTMENT */
+
+@media (max-width: 1200px) {
+  #appointments {
+    position:relative;
+    width: 92%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  #appointments > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-    margin-bottom: 2em;
+    height: 110%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    z-index: -1;
   }
 
+  #appointments > div > h3,
+  #appointments > div > h2 {
+    margin-top: 5px;
+    font-size: 30px;
+    padding-bottom: 10px;
+  }
 
-  /* H1, H2 */
-  h1, h2 {
-    font-size: 2rem;
+  #appointments h2 {
+    margin-bottom: 30%;
+    padding-bottom: 10px;
+  }
+
+  .cita-button {
+    position: relative;
+    margin-right: 65%;
+    margin-top: 10%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #appointments {
+    position:relative;
+    width: 92%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  #appointments > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    z-index: -1;
+  }
+
+  #appointments > div > h3,
+  #appointments > div > h2 {
+    margin-top: 5px;
+    font-size: 24px;
+    padding-bottom: 30px;
+  }
+
+  #appointments h2 {
+    margin-bottom: 30%;
+    padding-bottom: 10px;
+  }
+
+  .cita-button {
+    position: relative;
+    margin-right: 45%;
+    margin-top: 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  #appointments {
+    position:relative;
+    width: 92%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  #appointments > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    z-index: -1;
+  }
+
+  #appointments > div > h3,
+  #appointments > div > h2 {
+    margin-top: 5px;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+
+  #appointments h2 {
+    margin-bottom: 30%;
+    padding-bottom: 10px;
+  }
+
+  .cita-button {
+    position: relative;
+    margin-right: 45%;
+    margin-top: 10%;
   }
 }
 
 @media (max-width: 576px) {
-  /* Section */
-  section {
-    text-align: left;
-    margin-bottom: 2em;
+  #appointments {
+    position: relative;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #appointments > div::after {
+    content: "";
+    position:absolute; 
+    top: 0;
+    right: 0; 
+    bottom: 0; /* Añadido para cubrir toda la altura del div */
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    z-index: -1;
+  }
+
+  #appointments > div > h3,
+  #appointments > div > h2 {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  #appointments > div > h2 {
+    margin-bottom: 30px;
+  }
+
+  .cita-button {
+    position: relative;
+    margin-right: 45%;
+    border-radius: 25px;
   }
 }

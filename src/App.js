@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Blog from './components/Blog';
 import AppointmentForm from './components/AppointmentForm';
 import PsychologyArticles from './components/PsychologyArticles';
@@ -12,6 +12,7 @@ import CustomModal from './components/modalEmergency';
 import '../src/App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+
 
 
 
@@ -49,19 +50,19 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
         </section>
   <section id="howItWork">
           <HowItWork />
-      <div className='agenda'>        
+  <div className='agenda'>        
         <img src='/ilustracion1.jpg' alt='Ilustracion agenda'/>
         <img src='/ilustracion2.jpg' alt='Ilustracion modalidad'/>
         <img src='/ilustracion3.jpg' alt='ilustracion sesion'/>
         </div>
       <div className='subtitulos'>
-        <h3>Agenda tu cita online</h3>
-        <h3>Seleccione la modalidad que prefiera</h3>
-        <h3>Realiza la sesion</h3>
-        <p>Elige la hora y el día que mejor se adapte a sus tiempos</p>
-        <p>Puede realizar su consulta de forma presencial o virtual, 
+        <h3 className='a1'>Agenda tu cita online</h3>
+        <h3 className='a2'>Seleccione la modalidad que prefiera</h3>
+        <h3 className='a3'>Realiza la sesion</h3>
+        <p className='b1'>Elige la hora y el día que mejor se adapte a sus tiempos</p>
+        <p className='b2'>Puede realizar su consulta de forma presencial o virtual, 
           mediante una videollamada de alta calidad y confidencialidad.</p>
-        <p>Solo queda comenzar la sesion y empieza a cambiar tu vida. 
+        <p className='b3'>Solo queda comenzar la sesion y empieza a cambiar tu vida. 
         Se abona previamente la sesión  50€ el tiempo de la misma será  mínimo una hora  o lo necesario en cada caso.</p>
       </div>
         </section>

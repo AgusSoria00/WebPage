@@ -1,5 +1,3 @@
-// Por ejemplo, el componente Blog podría tener su propio archivo Blog.js
-
 import React from 'react';
 
 const Blog = () => {
