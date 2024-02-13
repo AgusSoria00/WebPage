@@ -1,9 +1,12 @@
 import React from 'react';
+import '../App.css';
 
 const WorkWith = () => {
   const textStyle = {
     textAlign: 'center',
-    fontWeight: 'bold', 
+    fontWeight: 'bold',
+    padding: '2vw', 
+    fontSize: '1.5vw'
   }
   const h1Style = {
     fontSize: '30px',

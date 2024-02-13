@@ -112,11 +112,12 @@ img {
 }
 
 /* PARTE DE COMO FUNCIONA */
-#howItWork .contenedor {
+#howItWork .agenda {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px; 
-  align-items: center;
+  grid-template-columns: repeat(3, 30.5vw); 
+  margin-left: 8%;
+  margin-top: 5%;
+  margin-bottom: 3%;
 }
 
 #howItWork h2 {
@@ -131,15 +132,15 @@ img {
   font-family: 'Quicksand', sans-serif;
   text-align: center;
 }
-
-#howItWork .agenda .image-container {
-  text-align: center; 
-  grid-column: span 1;
-  margin: 0 15px; 
+#howItWork h4 {
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  margin-top: 3%;
 }
 
 #howItWork .agenda img {
-  width: 20%; 
+  width: 15vw; 
   height: auto; 
   border: 5px solid #fff; 
   border-radius: 50%; 
@@ -153,8 +154,35 @@ img {
   text-align: center;
 }
 
-/* PEDIR CITAS */
+/* COMO SE TRABAJA */
+#workWith #parteArriba {
+  display: flex;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 20px; /* Ajusta el espacio entre las columnas */
+  align-items: center; /* Centra los elementos horizontalmente */
+  text-align:center;
+}
+#workWith .subseccion {
+  max-width: 250px; /* Ajusta el ancho máximo de cada subsección */
+  margin: 20px; /* Ajusta el espacio entre las subsecciones */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+#workWith .subseccion img {
+  margin-bottom: 15px; /* Ajusta la cantidad de espacio entre la imagen y el texto */
+  width: 50px;
+  height: 50px;
+}
+#workWith .subseccion h2 {
+  font-size: 20px;
+  margin-bottom: 35px; /* Ajusta la cantidad de espacio entre el título y el párrafo */
+}
+#workWith .subseccion p {
+  font-size: 1.5vw;
+}
 
+/* PEDIR CITAS */
 #appointments::before {
   content: "";
   position: absolute;
@@ -232,9 +260,16 @@ img {
   cursor: pointer;
   position: relative;
 }
+
+/* VIDEOS */ 
 #videos {
   text-align: center;
   margin-top: 20px;
+}
+#videos h2 {
+  color: purple;
+  font-size: 27px; 
+  margin-bottom: 20px;
 }
 
 .video-gallery {
@@ -243,46 +278,23 @@ img {
 }
 
 .video-item {
-  opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 2.9s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.708); /* Ajusta la opacidad del fondo */
+  border-radius: 10px; /* Añade bordes redondeados */
 }
 
 .video-item.active {
   opacity: 1;
 }
-button {
+
+.arrow-button {
   font-size: 20px;
   background-color: transparent;
   border: none;
   cursor: pointer;
   margin: 0 10px;
 }
-#workWith #parteArriba {
-  display: flex;
-  grid-template-columns: repeat(4, 2fr);
-  gap: 20px; /* Ajusta el espacio entre las columnas */
-  align-items: center; /* Centra los elementos horizontalmente */
-  text-align:center;
-}
-#workWith .subseccion {
-  max-width: 250px; /* Ajusta el ancho máximo de cada subsección */
-  margin: 20px; /* Ajusta el espacio entre las subsecciones */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#workWith .subseccion img {
-  margin-bottom: 15px; /* Ajusta la cantidad de espacio entre la imagen y el texto */
-  width: 50px;
-  height: 50px;
-}
-#workWith .subseccion h2 {
-  font-size: 20px;
-  margin-bottom: 35px; /* Ajusta la cantidad de espacio entre el título y el párrafo */
-}
-#workWith .subseccion p {
-  font-size: 16px;
-}
+/* SECCION EMERGENCIA */
 #emergency {
   display: flex;
   flex-direction: column;
@@ -291,11 +303,11 @@ button {
   position: relative;
 }
 .primeraImagen {
-  position: absolute;
-  top: 14.6vh;
-  right: 16px;
+  position: relative;
+  top: -0.2%;
+  left: 60%;
   z-index: 2;
-  max-width: 70%;
+  max-width: 98%;
 }
 .primerColor,
 .segundoColor {
@@ -315,7 +327,7 @@ button {
   font-size: 25px;  
   text-align: justify;
   width: 40%;
-  transform: translateY(70px);
+  transform: translateY(-335%);
   margin: 20px 35px 20px;
   word-spacing: 0.5px;
   line-height: 1.5;
@@ -324,7 +336,7 @@ button {
   display: flex;
   flex-direction: column;
   width: 40%;
-  margin: 100px 35px 300px;
+  margin: -87% 35px 300px;
 }
 .casillero label {
   text-align: left;
@@ -370,36 +382,50 @@ button {
 .enviar-button:hover {
   background-color: #8E39A4;
 }
-@media (max-width: 768px) { /* Media query para pantallas pequeñas */
-  .primeraImagen {
-    max-width: 100%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
-  }
+
+/* ARTICULOS */
+#articles {
+  margin-bottom: 1vw;
 }
-#articles{
-  grid-template-columns: repeat(3, 1fr);
-  align-items: flex-start;
-  margin: 0;
-  padding: 0;
-  margin: 0 auto;
-  width:auto;
-  margin-bottom: 20px;
+#articles > h2{
+  font-size: 3vw;
+  padding-bottom: 4vw;
 }
+.articles-container {
+  width: 90%; /* Cambia el ancho según lo que desees */
+  max-height: 800px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto; /* Esto hará que aparezca el scrollbar solo en caso de necesidad */
+  margin: 0 auto; /* Centrar el contenedor */
+}
+
+.articles {
+  width: 90%;
+  padding-right: 15px; /* Ajusta el padding derecho para compensar el ancho del scrollbar */
+}
+
 .articulo {
   margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
 }
+
 .articulo img {
   width: 100%;
 }
+
 .articulo h3 {
   margin-bottom: 10px;
 }
+
 .articulo p {
   margin-bottom: 20px;
 }
+
 .articulo a {
   color: blue;
   text-decoration: none;
 }
+
 #contacts {
   display: grid;
   background-color: #EAEAEA;
@@ -433,69 +459,88 @@ button {
 
 
 /* VENTANA MODAL */
-#btn-modal{
-  display: none;
-}
-.container-modal{
-  width: 100%;
-  height: 100vh;
+.modal-background {
   position: fixed;
-  top: 0; left: 0;
-  background-color: rgba(144, 148, 150, 0,8);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
 }
-#btn-modal:checked ~ .container-modal{
-  display: flex;
-}
-.content-modal{
-  width: 100%;
-  max-width: 400px;
+
+.container-modal {
+  background-color: #fff;
+  border-radius: 10px;
   padding: 20px;
-  background-color: #ffff;
-  border-radius: 4px;
+  max-width: 40vw;
+  max-height: 40vw;
+  overflow-y: auto;
 }
-.content-modal h2{
-  margin-bottom: 15px;
+
+.content-modal {
+  position: relative;
 }
-.content-modal p{
-  padding: 15px 0px;
-  border-top: 1px solid #bdbdbd;
-  border-bottom: 1px solid #bdbdbd;
+
+.titulo-modal {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
-.content-modal .btn-cerrar{
-  display: flex;
-  justify-content: flex-start;
-  grid-column: 1;
+
+.modal-form {
+  margin-bottom: 20px;
 }
-.container-modal .btn-cerrar label{
-  padding: 7px 10px;
-  background-color: #5488a3;
-  color:#fff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 300ms ease;
+
+.campo-label {
+  margin-bottom: 10px;
 }
-.container-modal .btn-cerrar label:hover{
-  background-color: #185E83;
-}
-.cerrar-modal{
-  height: 100vh;
-  position:absolute;
-  top:0; left: 0;
-  z-index: -1;
+
+.campo-input {
+  margin-bottom: 20px;
 }
 
 .date-picker {
   position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
   z-index: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.cerrar-enviar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: inherit;
+}
+
+.btn-cerrar {
+  margin-left: auto; 
+}
+
+.btn-atras {
+  margin-right: auto; 
+}
+
+.modal-submit,
+.btn-cerrar button,
+.btn-atras button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+.btn-cerrar button:hover,
+.btn-atras button:hover,
+.modal-submit:hover {
+  background-color: #0056b3;
+}
+
 /* SIGUIENTE VENTANA MODAL */
 .titulo-modal{
   font-size: 1.25rem;
@@ -518,12 +563,10 @@ button {
 }
 
 .modal-submit{
-  width: 35%;
   display: flex;
   justify-content: flex-end; 
   grid-column: 2;
   align-self: end;
-  padding: 7px 10px;
   background-color: #5488a3;
   color:#fff;
   border-radius: 4px;
@@ -533,11 +576,11 @@ button {
 .modal-submit :hover{
   background-color: #185E83;
 }
-.cerrar-enviar{ 
+/* .cerrar-enviar{ 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 20px;
-}
+} */
 .advertencia {
   font-size: 24px;
   font-weight: bold;
@@ -565,10 +608,128 @@ button {
   align-items: center;
 }
 
+/* FORMULARIO LOGIN */
+.modal1 form {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  text-align: center;
+  padding: 20px 25px;
+  box-shadow: 0 5px 10px rgba(71, 3, 6, 0.7);
+}
+.modal1 form .title {
+  color: #252525;
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+.modal1 form label {
+  margin-bottom: 35px;
+}
+
+.modal1 form label .fa-solid {
+  font-size: 20px;
+  color:#cb232c;
+  margin-right: 10px;
+}
+.modal1 form label input{
+  outline: none;
+  border: none;
+  color: #252525;
+  border-bottom: solid 1px #ce1d61;
+  padding: 0 5px;
+font-size: 18px;
+}
+.modal1 form label input::placeholder { 
+  color: rgba(37, 37, 37, 0.5);
+}
+.modal1 form .link{
+  color:#252525;
+  margin-bottom: 15px;
+}
+.modal1 form button {
+  color:#fff;
+  border: none;
+  background: linear-gradient(to right,#cb232c, #ce1d61);
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* BOTON FLOTANTE ADMIN */
+#btn-mas{
+  display: none;
+}
+.container{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+}
+.redes a, .btn-mas label{
+  display: block;
+  text-decoration: none;
+  background: #cc2b2b;
+  color: #fff;
+  width: 5vw;
+  height: 5vw;
+  line-height: 5vw;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
+  transition: all 500ms ease;
+  font-size: 2vw;
+}
+.redes a:hover{
+  background: #fff;
+  color: #cc2b2b;
+}
+.redes a{
+  margin-bottom: -15px;
+  opacity: 0;
+  visibility: hidden;
+}
+#btn-mas:checked~ .redes a{
+  margin-bottom: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+.btn-mas label{
+  cursor: pointer;
+  background: #f44141;
+  font-size: 2vw;
+}
+#btn-mas:checked ~ .btn-mas label{
+  transform: rotate(135deg);
+  font-size: 2vw;
+}
+
 
 /* MEDIA QUERIES */
 
 /* BLOG */
+
+@media (min-width: 1400px) {
+  #blogFondo .perfil img {
+    width: 90%; 
+    max-width: 28vw; 
+    margin-top: -15vw; 
+    display: block; 
+    margin-left: 1%;
+  }
+
+  #blogFondo .texto1 {
+    width: 65vw; 
+    transform: translate(42%, 0%); 
+    font-size: 33px;
+    margin-right: 2%; 
+  }
+
+  #blogFondo h2 {
+    font-size: 43px;
+    padding-bottom: 2%;
+  }
+}
 @media (max-width: 768px) {
   #blogFondo .perfil img {
     display: none; 
@@ -613,6 +774,38 @@ button {
 }
 
 /* HOWITWORK */
+
+@media (min-width: 1400px) {
+  #howItWork .agenda {
+    display: grid;
+    grid-template-columns: repeat(3, 31.25vw); 
+    margin-left: 8%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+  }
+  #howItWork .agenda img {
+    width: 15vw; 
+    max-width: none; 
+  }
+  #howItWork .subtitulos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; 
+    font-size: 25px;
+  }
+  #howItWork .subtitulos p{
+    font-size: 25px;
+  }
+  #howItWork h2{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-size: 35px;
+  }
+  #howItWork h4{
+    font-size: 25px;
+  }
+}
+
 @media (max-width: 992px) {
   #howItWork .agenda {
     display: grid;
@@ -673,6 +866,36 @@ button {
   }
 
 /* WORKWITH */
+@media (min-width: 1400px) {
+  #workWith #parteArriba {
+    grid-template-columns: repeat(4, 3fr);
+    gap: 30px; 
+  }
+  #workWith .subseccion {
+    max-width: 600px; 
+    margin: 30px; 
+  }
+  #workWith .subseccion img {
+    margin-bottom: 20px; 
+    width: 8vw; 
+    height: 8vw;
+  }
+  #workWith .subseccion h2 {
+    font-size: 28px; 
+    margin-bottom: 35px; 
+  }
+  #workWith .subseccion p {
+    font-size: 26px; 
+  }
+  #workWith h1 {
+    font-size: 30px;
+  }
+  #workWith p {
+    font-size: 25px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
 @media (max-width: 768px) {
   #workWith #parteArriba {
     display: flex;
@@ -705,45 +928,21 @@ button {
 }
 
 /* APPOINTMENT */
-
-@media (max-width: 1200px) {
-  #appointments {
-    position:relative;
-    width: 92%;
-    text-align: center;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
+@media (min-width: 1400px) {
+  #appointments > div > h3 {
+    font-size: 33px; 
+    margin-top: 4vw; 
   }
-
   #appointments > div::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 110%;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    z-index: -1;
+    height: 30vw; 
   }
-
-  #appointments > div > h3,
   #appointments > div > h2 {
-    margin-top: 5px;
-    font-size: 30px;
-    padding-bottom: 10px;
+    font-size: 35px; 
   }
-
-  #appointments h2 {
-    margin-bottom: 30%;
-    padding-bottom: 10px;
-  }
-
   .cita-button {
-    position: relative;
-    margin-right: 65%;
-    margin-top: 10%;
+    padding: 30px 30px; 
+    font-size: 23px; 
+    bottom: -100%; 
   }
 }
 
@@ -802,8 +1001,8 @@ button {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    margin-left: -15%;
+    width: 130%;
     height: 110%;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -832,7 +1031,8 @@ button {
 @media (max-width: 576px) {
   #appointments {
     position: relative;
-    width: 90%;
+    max-width: 100%; 
+    margin: 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -844,17 +1044,20 @@ button {
     position:absolute; 
     top: 0;
     right: 0; 
-    bottom: 0; /* Añadido para cubrir toda la altura del div */
-    left: 0;
+    bottom: 0; 
+    margin-left: -15%;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     z-index: -1;
+    width: 130%;
   }
 
   #appointments > div > h3,
   #appointments > div > h2 {
     margin-top: 5px;
-    font-size: 20px;
+    font-size: 22px;
+    width: 130%;
+    margin-left: -15%;
   }
 
   #appointments > div > h2 {
@@ -865,5 +1068,251 @@ button {
     position: relative;
     margin-right: 45%;
     border-radius: 25px;
+  }
+}
+
+
+@media (min-width: 1400px) {
+  #emergency {
+    height: auto;
+  }
+  .primeraImagen {
+    max-width: 100%;
+    left: 44vw;
+    transform: translateY(25.1%);
+  }
+  .primerColor p {
+    font-size: 32px;
+    width: 75%;
+    margin-top: 19vw;
+    padding-bottom: 10vw;
+  }
+  .casillero {
+    width: 40%;
+    margin-top: -98vw;
+    padding-top: 10vw;
+    gap: 1.5vw; 
+    margin-left: 35px;  
+  }
+  .primerColor {
+    max-height: 1000px; 
+  }
+  .casillero textarea {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 5%;
+    margin-top: 0; /* Cambiado de -10% a 0 */
+  }
+  .casillero label {
+    font-size: 25px;
+    margin-top: 0; /* Cambiado de -15% a 0 */
+  }
+  .casillero2 textarea {
+    width: 100%;
+    font-size: 15px;
+  }
+  .casillero2 label {
+    font-size: 25px;
+  }
+.segundoColor {
+    min-height: 400px; /* Ajusta según necesidades */
+  }
+.enviar-button {
+    bottom: 25%;
+    left: 35%;
+    width: 10vw;
+    height: 4vw;
+  }
+}
+@media (max-width: 1399px) {
+  #emergency {
+    height: auto;
+  }
+  .primeraImagen {
+    max-width: 100%;
+    left: 35vw;
+    transform: translateY(25%);
+  }
+  .primerColor p {
+    font-size: 30px;
+    width: 75%;
+    margin-top: -5vw;
+    padding-bottom: 5vw;
+  }
+  .casillero {
+    width: 30%;
+    margin-top: -80vw; 
+    margin-left: 35px;  
+    padding-top: 10vw;
+    gap: 2vw; 
+  }
+  .primerColor {
+    max-height: 1000px; 
+  }
+  .casillero textarea {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 5%;
+    margin-top: 0; /* Cambiado de -10% a 0 */
+  }
+  .casillero label {
+    font-size: 25px;
+    margin-top: 0; /* Cambiado de -15% a 0 */
+  }
+  .casillero2 textarea {
+    width: 100%;
+    font-size: 15px;
+  }
+  .casillero2 label {
+    font-size: 25px;
+  }
+.segundoColor {
+    min-height: 400px; /* Ajusta según necesidades */
+  }
+.enviar-button {
+    bottom: 25%;
+    left: 35%;
+    width: 10vw;
+    height: 4vw;
+  }
+}
+
+@media (max-width: 1229px) {
+  #emergency {
+    height: auto;
+  }
+  .primeraImagen {
+    max-width: 85%;
+    left: 35vw;
+    transform: translateY(40.7%);
+  }
+  .primerColor p {
+    font-size: 30px;
+    width: 75%;
+    margin-top: 18vw;
+    padding-bottom: 5vw;
+  }
+  .casillero {
+    width: 30%;
+    margin-top: -92vw;
+    padding-top: 10vw;
+    gap: 1.5vw; 
+    margin-left: 35px;  
+  }
+  .primerColor {
+    max-height: 1000px; 
+  }
+  .casillero textarea {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 5%;
+    margin-top: 0; /* Cambiado de -10% a 0 */
+  }
+  .casillero label {
+    font-size: 25px;
+    margin-top: 0; /* Cambiado de -15% a 0 */
+  }
+  .casillero2 textarea {
+    width: 100%;
+    font-size: 15px;
+  }
+  .casillero2 label {
+    font-size: 25px;
+  }
+.segundoColor {
+    min-height: 400px; /* Ajusta según necesidades */
+  }
+.enviar-button {
+    bottom: 25%;
+    left: 35%;
+    width: 10vw;
+    height: 4vw;
+  }
+}
+@media (max-width: 576px) {
+  .primeraImagen img {
+    display: none; 
+  }
+  #emergency {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 185vh;
+    position: relative;
+  }
+
+  .emergency-titulo {
+    font-size: 20px;
+    margin-top: 5%;
+    text-align: center;
+  }
+
+  .primerColor p {
+    font-size: 18px;
+    width: 80%;
+    margin: 15px 20px 15px;
+  }
+  .segundoColor {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column; /* Para que los elementos se apilen verticalmente */
+    flex: 1;
+    display: flex;
+    align-items:flex-start;
+  }
+  .casillero {
+    width: 30%;
+    margin-top: -150vw;
+    padding-top: 10vw; 
+    margin-left: 35px;
+    font-size: 15px;  
+  }
+}
+
+@media (max-width: 900px) {
+  .primeraImagen img {
+    display: none; /* Ocultar solo la imagen */
+  }
+
+  .emergency-titulo {
+    font-size: 25px;
+    margin-top: 5%;
+  }
+
+  .primerColor p {
+    font-size: 20px;
+    width: 80%;
+    transform: translateY(40px);
+    margin: 15px 35px 15px;
+  }
+
+  .casillero{
+    width: 100%;
+    transform: translateY(205%);
+  }
+}
+
+/* BOTON FLOTANTE ADMIN */ 
+@media (min-width: 1300px) {
+  .redes a,
+  .btn-mas label {
+    width: 6vw;
+    height: 6vw;
+    line-height: 6vw;
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .redes a.icon-calendar,
+  .redes a.icon-attention,
+  .redes a.icon-chat-empty,
+  .btn-mas label.icon-plus-1 {
+    font-size: 2.5vw; 
+  }
+  .label .icon-plus-1 {
+    font-size: 2.5vw;
+  }
+  #btn-mas:checked ~ .btn-mas label{
+    font-size: 2.5vw;
   }
 }

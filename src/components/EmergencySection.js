@@ -1,15 +1,16 @@
 import React from 'react';
+import '../App.css';
 
 const EmergencySection = () => {
   const emergencyStyles = {
-    marginBottom: '20px', // Ejemplo de estilo en línea
+    marginBottom: '20px',
     fontSize: '18px',
     color: '#333',
   };
 
   const headingStyles = {
-    fontSize: '30px', // Ejemplo de modificación del tamaño de fuente
-    fontWeight: 'bold', // Ejemplo de modificación del peso de la fuente
+    fontSize: '30px', 
+    fontWeight: 'bold', 
     textAlign: 'left',
     color: '#101010',
     right: '115px',
@@ -24,13 +25,13 @@ const EmergencySection = () => {
   };
 
   const pStyle = {
-    fontSize: '15px', //modificación del tamaño de fuente
-    fontWeight: 'bold', // modificación del peso de la fuente
+    fontSize: '15px', 
+    fontWeight: 'bold', 
     textAlign: 'center',
   }
   return (
     <div style={emergencyStyles}>
-      <h2 style={headingStyles}>¿Estás en una situación de urgencia?</h2>
+      <h2 style={{headingStyles}} className='emergency-titulo'>¿Estás en una situación de urgencia?</h2>
         {/* Contenido */}
       <div className="primeraImagen">
         <img src="/ilustracionUrgencia.jpg" alt="urgencia" style={imageStyles} />

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Blog from './components/Blog';
 import AppointmentForm from './components/AppointmentForm';
-import PsychologyArticles from './components/PsychologyArticles';
 import EducationalVideos from './components/EducationalVideos';
 import EmergencySection from './components/EmergencySection';
 import { redirectToSocialMedia } from './components/Contact';
@@ -9,19 +8,84 @@ import WorkWith from './components/WorkWith';
 import HowItWork from './components/HowItWork';
 import Modal from './components/modal';
 import CustomModal from './components/modalEmergency';
+import LoginForm from './components/loginForm';
 import '../src/App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-
-
-
+import { faComments, faFaceFrownOpen, faCalendarDays, faPlus } from '@fortawesome/free-solid-svg-icons';
+import AdminPage from './components/AdminPage';
+import FontelloCss from './css/fontello.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import DatingMessages from './components/datingMessages';
 
 const App = () => {
-  return ( 
+
+  const handleAttentionClick = () => {
+    // Lógica para enviar los datos de la consulta al servidor
+    fetch('/api/emergencia', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(/* datos de la consulta */)
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log(data); // Mostrar respuesta del servidor
+    })
+    .catch(error => console.error('Error:', error));
+  };
+  
+  // Manejar clic en el botón "icon-chat-empty"
+  const handleChatEmptyClick = () => {
+    // Lógica para enviar los datos de la cita al servidor
+    fetch('/api/programar-cita', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(/* datos de la cita */)
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log(data); // Mostrar respuesta del servidor
+      // Después de enviar los datos, redirige a la ruta deseada
+      window.location.href = '/dating-messages'; // Cambia a la ruta deseada
+    })
+    .catch(error => console.error('Error:', error));
+  };
+
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false); // Nuevo estado para verificar si el usuario es administrador
+
+  const handleInicioClick = () => {
+    setShowLoginForm(true);
+  };
+
+  const handleCloseLoginForm = () => {
+    setShowLoginForm(false);
+  };
+
+  // Función para verificar si el usuario es administrador
+  const checkAdminStatus = () => {
+    // Aquí debes implementar la lógica para verificar si el usuario es administrador
+    // Puedes hacer una solicitud al servidor para verificar la autenticación del usuario como administrador
+    // y actualizar el estado isAdmin en consecuencia.
+    // Por ahora, asumamos que el usuario es administrador al iniciar sesión.
+    setIsAdmin(true);
+  };
+
+  useEffect(() => {
+    // Verificar el estado de administrador al cargar la página
+    checkAdminStatus();
+  }, []);
+
+  return (
     <div>
       <nav>
         <ul>
-          <li><a href="#blog">Inicio</a></li>
+        <li>
+            <a href="#blog" onClick={handleInicioClick}>Inicio</a></li>
           <li><a href="#appointments">Pedir Citas</a></li>
           <li><a href="#videos">Videos Informativos</a></li>
           <li><a href="#emergency">Urgencia</a></li>
@@ -29,6 +93,21 @@ const App = () => {
           <li><a href="#contact">Contacto</a></li>
         </ul>
       </nav>
+      {showLoginForm && <LoginForm onClose={handleCloseLoginForm} />}
+      {isAdmin && <AdminPage />} {/* Renderizar AdminPage solo si el usuario es administrador */}
+      {isAdmin && (
+  <div className="container">
+  <input type="checkbox" id="btn-mas" />
+  <div className="redes">
+  <a href="#" class="icon-calendar"></a>
+  <a href="#" className="icon-attention" onClick={handleAttentionClick}></a>
+  <a href="/dating-messages" className="icon-chat-empty" onClick={handleChatEmptyClick}></a>
+  </div>
+  <div className="btn-mas">
+    <label htmlFor="btn-mas" className="icon-plus-1"></label>
+  </div>
+</div>
+)}
       <main>
   <section id="blogFondo">
           <Blog />
@@ -101,7 +180,7 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
   <section id="emergency">
 <div className='primerColor'>
           <EmergencySection />
-        <p>Si se encuentra atravesando por un contexto difícil que requiere atención inmediata, 
+        <p className='texto'>Si se encuentra atravesando por un contexto difícil que requiere atención inmediata, 
         le invitamos a que comparta los detalles de su situacion, así como sus datos de contacto, 
         y le responderemos a la mayor brevedad posible. Su solicitud será evaluada y priorizada según su nivel de urgencia.</p>
     <div class="casillero">
@@ -111,10 +190,7 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
         <textarea id="comentarios2" name="comentarios2" rows="2"></textarea>
     <label for="comentarios3">E-mail</label>
         <textarea id="comentarios3" name="comentarios3" rows="2"></textarea>
-    </div>
-          <div className='primeraImagen'>
-            <img src='/ilustracionUrgencia.jpg' alt='urgencia'/>
-          </div>  
+    </div>         
 </div>
     <div className='segundoColor'>
     <div class='casillero2'>
@@ -124,37 +200,64 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
       <CustomModal />
     </div>
         </section>
-  <section id="articles">
-          <PsychologyArticles />
-          <h2>Conoce nuestras últimas publicaciones</h2>
-<article class="articulo">
-  <img src="" alt="Trastornos de salud mental y estigmatización"></img>
-  <h3>Trastornos de salud mental y estigmatización</h3>
-  <p>La salud mental, un componente fundamental de nuestro bienestar general, a menudo se ve obstaculizada por el estigma social. En este artículo, analizamos cómo el estigma puede afectar a las personas con trastornos de salud mental y cómo podemos trabajar para reducirlo.</p>
-  <a href="#">Leer más</a>
-</article>
+        <section id="articles">
+    <h2>Articulos de investigacion</h2>
+  <div class="articles-container">
+    <div class="articles">
+      <article class="articulo">
+        <h3>Trastornos de salud mental y estigmatización</h3>
+        <p>La salud mental, un componente fundamental de nuestro bienestar general, a menudo se ve obstaculizada por el estigma social. En este artículo, analizamos cómo el estigma puede afectar a las personas con trastornos de salud mental y cómo podemos trabajar para reducirlo.</p>
+        <a href="#">Leer más</a>
+      </article>
 
-<article class="articulo">
-  <img src="" alt="Terapia cognitivo conductual con parejas"></img>
-  <h3>Terapia cognitivo conductual con parejas</h3>
-  <p>La Terapia Cognitivo-Conductual (TCC) con parejas es una modalidad de intervención psicológica que ha demostrado ser eficaz para el tratamiento de una amplia gama de problemas de relación. En este artículo, analizamos cómo funciona la TCC con parejas y cómo puede ayudarte a mejorar tu relación.</p>
-  <a href="#">Leer más</a>
-</article>
+      <article className="articulo">
+        <div>
+          <h3>Terapia cognitivo conductual con parejas</h3>
+          <p>
+            La Terapia Cognitivo-Conductual (TCC) con parejas es una modalidad de intervención psicológica que ha demostrado ser eficaz para el tratamiento de una amplia gama de problemas de relación. En este artículo, analizamos cómo funciona la TCC con parejas y cómo puede ayudarte a mejorar tu relación.
+          </p>
+          <a href="#">Leer más</a>
+        </div>
+      </article>
 
-<article class="articulo">
-  <img src="" alt="Crisis de la mediana edad y psicoterapia"></img>
-  <h3>Crisis de la mediana edad y psicoterapia</h3>
-  <p>La crisis vital de la mediana edad ha sido objeto de estudio y discusión en los últimos años. En este artículo, analizamos las causas y los síntomas de la crisis de la mediana edad, y cómo la psicoterapia puede ayudarte a superarla.</p>
-  <a href="#">Leer más</a>
-</article>    
-  </section>
+      <article className="articulo">
+        <div>
+          <h3>Crisis de la mediana edad y psicoterapia</h3>
+          <p>
+            La crisis vital de la mediana edad ha sido objeto de estudio y discusión en los últimos años. En este artículo, analizamos las causas y los síntomas de la crisis de la mediana edad, y cómo la psicoterapia puede ayudarte a superarla.
+          </p>
+          <a href="#">Leer más</a>
+        </div>
+      </article>
+      
+      <article class="articulo">
+        <h3>Estrés laboral y salud mental</h3>
+        <p>El estrés laboral es un problema común en el mundo moderno que puede tener graves consecuencias para la salud mental. En este artículo, exploramos cómo el estrés en el trabajo puede afectar nuestra salud mental y qué estrategias podemos utilizar para gestionarlo de manera efectiva.</p>
+        <a href="#">Leer más</a>
+      </article>
+
+      <article class="articulo">
+        <h3>Autoestima y bienestar emocional</h3>
+        <p>La autoestima juega un papel fundamental en nuestro bienestar emocional y nuestra capacidad para enfrentar los desafíos de la vida. En este artículo, examinamos la importancia de la autoestima y ofrecemos consejos prácticos para mejorarla.</p>
+        <a href="#">Leer más</a>
+      </article>
+
+      <article class="articulo">
+        <h3>Depresión en la adolescencia: signos y tratamiento</h3>
+        <p>La depresión es un trastorno mental grave que puede afectar a personas de todas las edades, incluidos los adolescentes. En este artículo, analizamos los signos y síntomas de la depresión en la adolescencia y exploramos diferentes opciones de tratamiento disponibles.</p>
+        <a href="#">Leer más</a>
+      </article>
+    </div>
+  </div>
+</section>
+
       </main>
       <section id="contacts">
       <h3>Informacion de contacto</h3>
       <footer id='contacts'>
   <div className='columnas'>
     <div>
-      <p>Dirección: 1st Industria, calle A N° 1234</p>
+      <p>Dirección: Calle Titanes local 4. Codigo Postal: 11009 Cádiz.</p>
       <p>Teléfono: +34 680 39 26 97</p>
       <p>Email: support@corporate.cc</p>
       <p>Horarios de atención: Lunes a Sábados de 09:00 a 21:00. Domingos solo urgencias.</p>
@@ -178,3 +281,4 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
 };
 
 export default App;
+
