@@ -1,0 +1,14 @@
+{
+    "plugins": [
+      "react",
+      "react-router"
+    ],
+    "settings": {
+      "react-router": {
+        "version": "6"
+      }
+    },
+    "rules": {
+      "react-router/jsx-no-undef": "warn"
+    }
+  }

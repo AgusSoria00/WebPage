@@ -24,7 +24,7 @@ const EducationalVideos = () => {
   const arrowButtonStyle = {
     position: 'relative',
     top: '50%',
-    fontSize: '35px', // Ajusta el tamaño de la flecha según sea necesario
+    fontSize: '35px', 
     cursor: 'pointer',
   };
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -36,7 +36,7 @@ const EducationalVideos = () => {
     display: 'flex',
     alignItems: 'center',
     overflow: 'hidden',
-    margin: '0 auto', // Centra el contenedor horizontalmente
+    margin: '0 auto', 
     marginTop: '50px',
     marginLeft: '19%'
   };
@@ -45,7 +45,7 @@ const EducationalVideos = () => {
     const transformValue = -((currentVideoIndex - index) * 100) + 'vw';
     return {
       flex: '0 0 auto',
-      marginRight: '-80%', // Ajusta el espacio entre los videos
+      marginRight: '-80%', 
       transition: 'transform 0.3s ease-in-out',
       transform: `translateX(${transformValue})`,
       width: '80%'

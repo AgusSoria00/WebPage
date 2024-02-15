@@ -17,11 +17,13 @@ import AdminPage from './components/AdminPage';
 import FontelloCss from './css/fontello.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import DatingMessages from './components/datingMessages';
+import Calendar from './components/Calendar';
+
 
 const App = () => {
 
   const handleAttentionClick = () => {
-    // Lógica para enviar los datos de la consulta al servidor
+    // Para enviar los datos de la consulta al servidor
     fetch('/api/emergencia', {
       method: 'POST',
       headers: {
@@ -49,14 +51,13 @@ const App = () => {
     .then(response => response.text())
     .then(data => {
       console.log(data); // Mostrar respuesta del servidor
-      // Después de enviar los datos, redirige a la ruta deseada
-      window.location.href = '/dating-messages'; // Cambia a la ruta deseada
+      window.location.href = '/dating-messages'; 
     })
     .catch(error => console.error('Error:', error));
   };
 
   const [showLoginForm, setShowLoginForm] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false); // Nuevo estado para verificar si el usuario es administrador
+  const [isAdmin, setIsAdmin] = useState(false); // Estado para verificar si el usuario es administrador
 
   const handleInicioClick = () => {
     setShowLoginForm(true);
@@ -68,10 +69,6 @@ const App = () => {
 
   // Función para verificar si el usuario es administrador
   const checkAdminStatus = () => {
-    // Aquí debes implementar la lógica para verificar si el usuario es administrador
-    // Puedes hacer una solicitud al servidor para verificar la autenticación del usuario como administrador
-    // y actualizar el estado isAdmin en consecuencia.
-    // Por ahora, asumamos que el usuario es administrador al iniciar sesión.
     setIsAdmin(true);
   };
 
@@ -81,6 +78,7 @@ const App = () => {
   }, []);
 
   return (
+    <Router>
     <div>
       <nav>
         <ul>
@@ -97,16 +95,18 @@ const App = () => {
       {isAdmin && <AdminPage />} {/* Renderizar AdminPage solo si el usuario es administrador */}
       {isAdmin && (
   <div className="container">
-  <input type="checkbox" id="btn-mas" />
-  <div className="redes">
-  <a href="#" class="icon-calendar"></a>
-  <a href="#" className="icon-attention" onClick={handleAttentionClick}></a>
-  <a href="/dating-messages" className="icon-chat-empty" onClick={handleChatEmptyClick}></a>
+    <input type="checkbox" id="btn-mas" />
+    <div className="redes">
+    <div className="redes">
+    <Link to="#" className="icon-calendar"></Link>
+    <Link to="#" className="icon-attention" onClick={handleAttentionClick}></Link>
+    <Link to="/dating-messages" className="icon-chat-empty" onClick={handleChatEmptyClick}></Link>
   </div>
-  <div className="btn-mas">
-    <label htmlFor="btn-mas" className="icon-plus-1"></label>
+    </div>
+    <div className="btn-mas">
+      <label htmlFor="btn-mas" className="icon-plus-1"></label>
+    </div>
   </div>
-</div>
 )}
       <main>
   <section id="blogFondo">
@@ -277,7 +277,8 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
 
         </section>
     </div>
-  );
+  </Router>
+);
 };
 
 export default App;

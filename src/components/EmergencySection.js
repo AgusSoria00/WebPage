@@ -32,7 +32,6 @@ const EmergencySection = () => {
   return (
     <div style={emergencyStyles}>
       <h2 style={{headingStyles}} className='emergency-titulo'>¿Estás en una situación de urgencia?</h2>
-        {/* Contenido */}
       <div className="primeraImagen">
         <img src="/ilustracionUrgencia.jpg" alt="urgencia" style={imageStyles} />
       </div>

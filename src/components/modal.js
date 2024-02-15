@@ -35,7 +35,7 @@ const Modal = () => {
     const availableTimesForDate = [17, 18, 19, 20];
     setAvailableTimes(availableTimesForDate);
     
-    // Al seleccionar la fecha, también seleccionamos la primera hora disponible
+    // Al seleccionar la fecha, también selecciona la primera hora disponible
     setSelectedTime(availableTimesForDate[0]);
   };
 
@@ -83,7 +83,6 @@ const Modal = () => {
         <div className="modal-background">
           <div className="container-modal" ref={modalRef}>
             <div className="content-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
-              {/* Contenido de la ventana modal */}
               <h2 className="titulo-modal">Por favor ingrese sus datos</h2>
               <form
               method="post"

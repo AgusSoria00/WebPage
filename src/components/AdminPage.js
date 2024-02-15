@@ -18,8 +18,6 @@ const AdminPage = () => {
   return (
     <div>
       <div>
-        {/* Mostrar información de citas */}
-        {/* Puedes utilizar map() para recorrer el array de citas y renderizar cada elemento */}
         {citas.map((cita) => (
           // Renderizar información de la cita
           <div key={cita.id}>
@@ -28,8 +26,6 @@ const AdminPage = () => {
         ))}
       </div>
       <div>
-        {/* Mostrar información de consultas */}
-        {/* Puedes utilizar map() para recorrer el array de consultas y renderizar cada elemento */}
         {consultas.map((consulta) => (
           // Renderizar información de la consulta
           <div key={consulta.id}>

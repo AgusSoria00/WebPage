@@ -67,7 +67,7 @@ img {
 #blogFondo {
   position: relative;
   height: 100vh;
-  overflow: hidden; /* Asegura que el desenfoque no se "derrame" */
+  overflow: hidden; /* el desenfoque no se "derrame" */
 }
 #blogFondo::before {
   content: "";
@@ -93,10 +93,10 @@ img {
 #blogFondo .perfil img {
   width: 30vw; 
   height: auto; 
-  border: 5px solid #fff; /* Añade un borde blanco para mayor contraste */
+  border: 5px solid #fff; 
   border-radius: 50%; 
   transform: translateY(-80%);
-  object-fit: cover; /* Mantiene la proporción original de la imagen */
+  object-fit: cover; /* mantiene la proporción original de la imagen */
 }
 #blogFondo .texto1 {
   color: black;
@@ -158,25 +158,25 @@ img {
 #workWith #parteArriba {
   display: flex;
   grid-template-columns: repeat(4, 2fr);
-  gap: 20px; /* Ajusta el espacio entre las columnas */
-  align-items: center; /* Centra los elementos horizontalmente */
+  gap: 20px; 
+  align-items: center; 
   text-align:center;
 }
 #workWith .subseccion {
-  max-width: 250px; /* Ajusta el ancho máximo de cada subsección */
-  margin: 20px; /* Ajusta el espacio entre las subsecciones */
+  max-width: 250px; 
+  margin: 20px; 
   display: flex;
   flex-direction: column;
   align-items: center; 
 }
 #workWith .subseccion img {
-  margin-bottom: 15px; /* Ajusta la cantidad de espacio entre la imagen y el texto */
+  margin-bottom: 15px; 
   width: 50px;
   height: 50px;
 }
 #workWith .subseccion h2 {
   font-size: 20px;
-  margin-bottom: 35px; /* Ajusta la cantidad de espacio entre el título y el párrafo */
+  margin-bottom: 35px; 
 }
 #workWith .subseccion p {
   font-size: 1.5vw;
@@ -194,11 +194,11 @@ img {
   background-size: cover;
   filter: blur(3px);
   opacity: 0.85;
-  transition: filter 0.5s; /* Agrega una transición suave para el cambio de filtro */
+  transition: filter 0.5s; 
   z-index: 0;
 }
 #appointments:hover::before {
-  filter: blur(7px); /* Cambia el valor del desenfoque al pasar el cursor sobre el div */
+  filter: blur(7px); 
   opacity: 0.7;
 }
 #appointments {
@@ -223,34 +223,34 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.3); /* Fondo traslúcido */
+  background-color: rgba(255, 255, 255, 0.3); 
   border-radius: 10px;
   z-index: -1;
 }
 #appointments > div > h3 {
   font-size: 30px;
   font-family: 'Titillium Web', sans-serif;
-  margin-top: 70px; /* Agrega espacio en la parte superior del h3 */
+  margin-top: 70px; 
   color: black;
 }
 #appointments > div > h2 {
   font-size: 30px;
   font-family: 'Titillium Web', sans-serif;
-  margin: 0 auto; /* Centra horizontalmente el texto y elimina el margen */
+  margin: 0 auto; 
   white-space: normal;
   color: purple;
 }
 .cita-button {
   display: inline-block;
-  padding: 20px 20px; /* Ajusta el padding según tu preferencia */
+  padding: 20px 20px; 
   background-color: purple;
   color: white;
   border-radius: 30px;
   text-decoration: none;
-  position: relative; /* Cambiado a relative para mejor comportamiento responsivo */
-  bottom: -110%; /* Usa unidades relativas para la posición vertical */
+  position: relative; 
+  bottom: -110%; 
   left: 50%;
-  transform: translateX(-60%); /* Centra horizontalmente el botón */
+  transform: translateX(-60%); 
   z-index: 1;
 }
 .cita-button:hover {
@@ -279,8 +279,8 @@ img {
 
 .video-item {
   transition: opacity 2.9s ease-in-out;
-  background-color: rgba(255, 255, 255, 0.708); /* Ajusta la opacidad del fondo */
-  border-radius: 10px; /* Añade bordes redondeados */
+  background-color: rgba(255, 255, 255, 0.708); 
+  border-radius: 10px; 
 }
 
 .video-item.active {
@@ -313,7 +313,7 @@ img {
 .segundoColor {
   width: 100%;
   box-sizing: border-box;
-  flex-direction: column; /* Para que los elementos se apilen verticalmente */
+  flex-direction: column; 
   flex: 1;
   height: 100px;
   display: flex;
@@ -392,15 +392,15 @@ img {
   padding-bottom: 4vw;
 }
 .articles-container {
-  width: 90%; /* Cambia el ancho según lo que desees */
-  max-height: 800px; /* Ajusta la altura máxima según tus necesidades */
-  overflow-y: auto; /* Esto hará que aparezca el scrollbar solo en caso de necesidad */
-  margin: 0 auto; /* Centrar el contenedor */
+  width: 90%; 
+  max-height: 800px; 
+  overflow-y: auto; 
+  margin: 0 auto; 
 }
 
 .articles {
   width: 90%;
-  padding-right: 15px; /* Ajusta el padding derecho para compensar el ancho del scrollbar */
+  padding-right: 15px; 
 }
 
 .articulo {
@@ -435,26 +435,26 @@ img {
 #contacts .columnas {
   display: grid;
   grid-template-columns: 1fr 30px 1fr;
-  gap: 15px; /* Ajusta el espacio entre las columnas */
-  align-items: flex-start; /* Centra los elementos horizontalmente */
+  gap: 15px; 
+  align-items: flex-start; 
   text-align: left;
   margin: 10px;
 }
 
 #contacts p {
-  margin: 6px; /* Elimina el margen predeterminado de los párrafos */
+  margin: 6px; 
 }
 
 #contacts .iconos {
   display: flex;
   flex-direction: column;
-  align-items:flex-start; /* Alinea los íconos en el centro verticalmente */
+  align-items:flex-start; 
 }
 
 #contacts .iconos svg {
-  margin-bottom: 10px; /* Ajusta el espacio entre los íconos */
-  width: 25px; /* Ajusta el ancho del ícono */
-  height: 25px; /* Ajusta la altura del ícono */
+  margin-bottom: 10px; 
+  width: 25px; 
+  height: 25px; 
 }
 
 
@@ -601,8 +601,8 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
-  z-index: 1000; /* Z-index alto para que aparezca sobre otros elementos */
+  background-color: rgba(255, 255, 255, 0.7); 
+  z-index: 1000; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -827,12 +827,12 @@ font-size: 18px;
   #howItWork .agenda {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; /* Ajusta el espacio entre las columnas */
-    text-align: center; /* Centra los elementos en cada columna */
+    gap: 10px; 
+    text-align: center; 
   }
 
   #howItWork .agenda img {
-    width: 30%; /* Ocupa el ancho completo de su contenedor */
+    width: 30%; 
   }
 
   #howItWork .subtitulos {
@@ -842,7 +842,7 @@ font-size: 18px;
 
   #howItWork .subtitulos h3,
   #howItWork .subtitulos p {
-    margin-bottom: 5px; /* Ajusta el espacio entre los elementos h3 y p */
+    margin-bottom: 5px; 
   }
 }
 @media (max-width: 576px) {
@@ -1101,11 +1101,11 @@ font-size: 18px;
     width: 100%;
     font-size: 15px;
     margin-bottom: 5%;
-    margin-top: 0; /* Cambiado de -10% a 0 */
+    margin-top: 0; 
   }
   .casillero label {
     font-size: 25px;
-    margin-top: 0; /* Cambiado de -15% a 0 */
+    margin-top: 0; 
   }
   .casillero2 textarea {
     width: 100%;
@@ -1115,7 +1115,7 @@ font-size: 18px;
     font-size: 25px;
   }
 .segundoColor {
-    min-height: 400px; /* Ajusta según necesidades */
+    min-height: 400px; 
   }
 .enviar-button {
     bottom: 25%;
@@ -1153,11 +1153,11 @@ font-size: 18px;
     width: 100%;
     font-size: 15px;
     margin-bottom: 5%;
-    margin-top: 0; /* Cambiado de -10% a 0 */
+    margin-top: 0; 
   }
   .casillero label {
     font-size: 25px;
-    margin-top: 0; /* Cambiado de -15% a 0 */
+    margin-top: 0; 
   }
   .casillero2 textarea {
     width: 100%;
@@ -1167,7 +1167,7 @@ font-size: 18px;
     font-size: 25px;
   }
 .segundoColor {
-    min-height: 400px; /* Ajusta según necesidades */
+    min-height: 400px; 
   }
 .enviar-button {
     bottom: 25%;
@@ -1206,11 +1206,11 @@ font-size: 18px;
     width: 100%;
     font-size: 15px;
     margin-bottom: 5%;
-    margin-top: 0; /* Cambiado de -10% a 0 */
+    margin-top: 0; 
   }
   .casillero label {
     font-size: 25px;
-    margin-top: 0; /* Cambiado de -15% a 0 */
+    margin-top: 0; 
   }
   .casillero2 textarea {
     width: 100%;
@@ -1220,7 +1220,7 @@ font-size: 18px;
     font-size: 25px;
   }
 .segundoColor {
-    min-height: 400px; /* Ajusta según necesidades */
+    min-height: 400px; 
   }
 .enviar-button {
     bottom: 25%;
@@ -1255,7 +1255,7 @@ font-size: 18px;
   .segundoColor {
     width: 100%;
     box-sizing: border-box;
-    flex-direction: column; /* Para que los elementos se apilen verticalmente */
+    flex-direction: column; 
     flex: 1;
     display: flex;
     align-items:flex-start;
@@ -1271,7 +1271,7 @@ font-size: 18px;
 
 @media (max-width: 900px) {
   .primeraImagen img {
-    display: none; /* Ocultar solo la imagen */
+    display: none; 
   }
 
   .emergency-titulo {

@@ -7,12 +7,12 @@ const CustomModal = ({ buttonLabel, modalTitle, formAction, onSubmit }) => {
 
   const handleClick = () => {
     setModalVisible(true);
-    document.body.style.overflow = 'hidden'; // Desactivar el desplazamiento del fondo
+    document.body.style.overflow = 'hidden';
   };
 
   const handleClose = () => {
     setModalVisible(false);
-    document.body.style.overflow = 'auto'; // Restaurar el desplazamiento del fondo
+    document.body.style.overflow = 'auto'; 
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +26,7 @@ const CustomModal = ({ buttonLabel, modalTitle, formAction, onSubmit }) => {
   useEffect(() => {
     const handleModalClick = (e) => {
       if (modalRef.current && modalRef.current.contains(e.target)) {
-        e.stopPropagation(); // Evita que el evento se propague a través de la ventana modal
+        e.stopPropagation(); 
       }
     };
 

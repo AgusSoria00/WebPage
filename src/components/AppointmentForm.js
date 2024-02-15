@@ -9,7 +9,6 @@ const AppointmentForm = () => {
 para mejorar su bienestar.</h3>
       <h3>Ahora podrás pedir una cita con tu asistente emocional de manera online a 
         cualquier hora y en cualquier lugar</h3>
-      {/* Contenido del blog */}
     </div>
   );
 };
