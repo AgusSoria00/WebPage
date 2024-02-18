@@ -1,0 +1,7 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/.next.js/webpack": "pages/.next.js/webpack.js",
+  "/App": "pages/App.js",
+  "/_document": "pages/_document.js"
+}

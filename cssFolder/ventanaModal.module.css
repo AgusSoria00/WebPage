@@ -1,0 +1,81 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container-modal {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 40vw;
+    max-height: 40vw;
+    overflow-y: auto;
+  }
+  
+  .content-modal {
+    position: relative;
+  }
+  
+  .titulo-modal {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .modal-form {
+    margin-bottom: 20px;
+  }
+  
+  .campo-label {
+    margin-bottom: 10px;
+  }
+  
+  .campo-input {
+    margin-bottom: 20px;
+  }
+  
+  .date-picker {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 1;
+  }
+  
+  .cerrar-enviar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: inherit;
+  }
+  
+  .btn-cerrar {
+    margin-left: auto; 
+  }
+  
+  .btn-atras {
+    margin-right: auto; 
+  }
+  
+  .modal-submit,
+  .btn-cerrar button,
+  .btn-atras button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+  }
+  
+  .btn-cerrar button:hover,
+  .btn-atras button:hover,
+  .modal-submit:hover {
+    background-color: #0056b3;
+  }

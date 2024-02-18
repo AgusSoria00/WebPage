@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import '../App.css';
+import nextVenana from '../cssFolder/nextVenana.module.css';
 
 const CustomModal = ({ buttonLabel, modalTitle, formAction, onSubmit }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -43,18 +43,18 @@ const CustomModal = ({ buttonLabel, modalTitle, formAction, onSubmit }) => {
         {buttonLabel} Enviar
       </button>
       {modalVisible && (
-        <div className="modal-background">
-          <div className="container-modal" ref={modalRef}>
-            <div className="content-modal">
-              <h2 className="titulo-modal">{modalTitle}</h2>
-              <div className="advertencia">Advertencia</div>
-              <div className="mensaje">¿Estás seguro de que deseas enviar esta información?</div>
-              <form action={formAction} method="post" className="modal-form" onSubmit={handleSubmit}>
+        <div className={nextVenana.modalBackground}>
+          <div className={nextVenana.containerModal} ref={modalRef}>
+            <div className={nextVenana.contentModal}>
+              <h2 className={nextVenana.tituloModal}>{modalTitle}</h2>
+              <div className={nextVenana.advertencia}>Advertencia</div>
+              <div className={nextVenana.mensaje}>¿Estás seguro de que deseas enviar esta información?</div>
+              <form action={formAction} method="post" className={nextVenana.modalForm} onSubmit={handleSubmit}>
                 {/* Puedes agregar campos de formulario personalizados aquí según tus necesidades */}
-                <div className="botones">
-                  <input type="submit" value="Enviar" className="modal-submit" />
-                  <div className="btn-cerrar" onClick={handleClose}>
-                    <label htmlFor="btn-modal" className="label-cerrar">
+                <div className={nextVenana.botones}>
+                  <input type="submit" value="Enviar" className={nextVenana.modalSubmit} />
+                  <div className={nextVenana.btnCerrar} onClick={handleClose}>
+                    <label htmlFor="btn-modal" className={nextVenana.labelCerrar}>
                       Cancelar
                     </label>
                   </div>

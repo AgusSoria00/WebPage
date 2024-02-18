@@ -1,0 +1,133 @@
+#howItWork .agenda {
+    display: grid;
+    grid-template-columns: repeat(3, 30.5vw); 
+    margin-left: 8%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+  }
+  
+  #howItWork h2 {
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    text-align: center;
+    grid-column: span 3; 
+  }
+  
+  #howItWork p {
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+  }
+  #howItWork h4 {
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    margin-top: 3%;
+  }
+  
+  #howItWork .agenda img {
+    width: 15vw; 
+    height: auto; 
+    border: 5px solid #fff; 
+    border-radius: 50%; 
+  }
+  
+  #howItWork .subtitulos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; 
+    align-items: center; 
+    text-align: center;
+  }
+  
+
+  @media (min-width: 1400px) {
+    #howItWork .agenda {
+      display: grid;
+      grid-template-columns: repeat(3, 31.25vw); 
+      margin-left: 8%;
+      margin-top: 5%;
+      margin-bottom: 3%;
+    }
+    #howItWork .agenda img {
+      width: 15vw; 
+      max-width: none; 
+    }
+    #howItWork .subtitulos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px; 
+      font-size: 25px;
+    }
+    #howItWork .subtitulos p{
+      font-size: 25px;
+    }
+    #howItWork h2{
+      margin-top: 3%;
+      margin-bottom: 3%;
+      font-size: 35px;
+    }
+    #howItWork h4{
+      font-size: 25px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    #howItWork .agenda {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+    }
+  
+    #howItWork .image-container img {
+      width: 25%; 
+    }
+  
+    #howItWork .subtitulos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px; 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #howItWork .agenda {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 10px; 
+      text-align: center; 
+    }
+  
+    #howItWork .agenda img {
+      width: 30%; 
+    }
+  
+    #howItWork .subtitulos {
+      width: 100%;
+      text-align: center;
+    }
+  
+    #howItWork .subtitulos h3,
+    #howItWork .subtitulos p {
+      margin-bottom: 5px; 
+    }
+  }
+  @media (max-width: 576px) {
+    #howItWork .agenda {
+      flex-direction:column; 
+      display: none;
+    }
+    #howItWork .subtitulos {
+      max-width: 100%;
+      gap: 2vw;
+      padding-top: 10vw; 
+    }
+    #howItWork .subseccion:nth-child(odd) {
+      order: 1; 
+    }
+    #howItWork .subseccion:nth-child(even) {
+      order: 2; 
+    }
+    #howItWork .subseccion:nth-child(2n+1) {
+      margin-bottom: 20px;
+    }
+    }
