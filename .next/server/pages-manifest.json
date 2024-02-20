@@ -1,8 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/Calendar": "pages/Calendar.js",
-  "/datingMessages": "pages/datingMessages.js",
-  "/App": "pages/App.js",
-  "/_document": "pages/_document.js"
-}
+{"/App":"pages/App.html","/Calendar":"pages/Calendar.html","/datingMessages":"pages/datingMessages.html","/_error":"pages/_error.js","/_app":"pages/_app.js","/_document":"pages/_document.js","/404":"pages/404.html"}
