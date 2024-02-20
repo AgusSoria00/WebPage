@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../cssFolder/styles.module.css';
-import Blog from './components/Blog';
-import AppointmentForm from './components/AppointmentForm';
-import EducationalVideos from './components/EducationalVideos';
-import EmergencySection from './components/EmergencySection';
-import WorkWith from './components/WorkWith';
-import HowItWork from './components/HowItWork';
-import Modal from './components/modal';
-import CustomModal from './components/modalEmergency';
-import LoginForm from './components/loginForm';
+import Blog from '../components/Blog';
+import AppointmentForm from '../components/AppointmentForm';
+import EducationalVideos from '../components/EducationalVideos';
+import EmergencySection from '../components/EmergencySection';
+import WorkWith from '../components/WorkWith';
+import HowItWork from '../components/HowItWork';
+import Modal from '../components/modal';
+import CustomModal from '../components/modalEmergency';
+import LoginForm from '../components/loginForm';
+import AdminPage from '../components/AdminPage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faComments, faFaceFrownOpen, faCalendarDays, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
 
-  const router = useRouter();
-
   const handleAttentionClick = () => {
-    // Enviar datos de la consulta al servidor
+    // Para enviar los datos de la consulta al servidor
     fetch('/api/emergencia', {
       method: 'POST',
       headers: {
@@ -27,14 +24,14 @@ const App = () => {
       },
       body: JSON.stringify(/* datos de la consulta */)
     })
-      .then(response => response.text())
-      .then(data => {
-        console.log(data); // Mostrar respuesta del servidor
-        router.push('/dating-messages');
-      })
-      .catch(error => console.error('Error:', error));
+    .then(response => response.text())
+    .then(data => {
+      console.log(data); // Mostrar respuesta del servidor
+    })
+    .catch(error => console.error('Error:', error));
   };
-
+  
+  // Manejar clic en el botón "icon-chat-empty"
   const handleChatEmptyClick = () => {
     // Lógica para enviar los datos de la cita al servidor
     fetch('/api/programar-cita', {
@@ -44,15 +41,16 @@ const App = () => {
       },
       body: JSON.stringify(/* datos de la cita */)
     })
-      .then(response => response.text())
-      .then(data => {
-        console.log(data); // Mostrar respuesta del servidor
-        router.push('/dating-messages');
-      })
-      .catch(error => console.error('Error:', error));
+    .then(response => response.text())
+    .then(data => {
+      console.log(data); // Mostrar respuesta del servidor
+      window.location.href = '/dating-messages'; 
+    })
+    .catch(error => console.error('Error:', error));
   };
 
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false); // Estado para verificar si el usuario es administrador
 
   const handleInicioClick = () => {
     setShowLoginForm(true);
@@ -62,11 +60,22 @@ const App = () => {
     setShowLoginForm(false);
   };
 
+  // Función para verificar si el usuario es administrador
+  const checkAdminStatus = () => {
+    setIsAdmin(true);
+  };
+
+  useEffect(() => {
+    // Verificar el estado de administrador al cargar la página
+    checkAdminStatus();
+  }, []);
+
   return (
     <div>
       <nav>
         <ul>
-          <li><a href="#blog" onClick={handleInicioClick}>Inicio</a></li>
+        <li>
+            <a href="#blog" onClick={handleInicioClick}>Inicio</a></li>
           <li><a href="#appointments">Pedir Citas</a></li>
           <li><a href="#videos">Videos Informativos</a></li>
           <li><a href="#emergency">Urgencia</a></li>
@@ -75,8 +84,22 @@ const App = () => {
         </ul>
       </nav>
       {showLoginForm && <LoginForm onClose={handleCloseLoginForm} />}
+      {isAdmin && <AdminPage />} {/* Renderizar AdminPage solo si el usuario es administrador */}
+      {isAdmin && (
+  <div className="container">
+    <input type="checkbox" id="btn-mas" />
+    <div className="redes">
+      <a href="#" className="icon-calendar"></a>
+      <a href="#" className="icon-attention" onClick={handleAttentionClick}></a>
+      <a href="/dating-messages" className="icon-chat-empty" onClick={handleChatEmptyClick}></a>
+    </div>
+    <div className="btn-mas">
+      <label htmlFor="btn-mas" className="icon-plus-1"></label>
+    </div>
+  </div>
+)}
       <main>
-        <section id="blogFondo">
+  <section id="blogFondo">
           <Blog />
       <div className='texto1'>
           <p>Como especialista en acompañamiento y gestión emocional,
@@ -248,4 +271,3 @@ permitiéndote explorar tus pensamientos y sentimientos de manera auténtica.</p
 };
 
 export default App;
-
