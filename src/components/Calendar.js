@@ -1,16 +1,36 @@
 import React from 'react';
 import '../App.css';
 
-const Calendar = () => {
+const Calendar = ({ onSelectDate }) => {
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  const normalizeDate = (date) => {
+    date.setHours(0, 0, 0, 0);
+    return date;
+  };
+
+  const today = normalizeDate(new Date());
+  const twoMonthsFromNow = normalizeDate(new Date());
+  twoMonthsFromNow.setDate(today.getDate() + 60);
+
+  const handleSelectDate1 = (day) => {
+    const selectedDate = normalizeDate(new Date(year, month, day));
+    if (selectedDate >= today && selectedDate <= twoMonthsFromNow) {
+      onSelectDate(selectedDate);
+    } else {
+      alert('Por favor, selecciona una fecha dentro de los próximos dos meses.');
+    }
+  };
 
   const getMonthDays = (month, year) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const days = [];
     for (let i = 1; i <= daysInMonth; i++) {
+      const dayDate = normalizeDate(new Date(year, month, i));
+      const isDisabled = dayDate < today || dayDate > twoMonthsFromNow;
       days.push(
-        <div key={i} className="calendar__day calendar__item">
+        <div key={i} className={`calendar__day calendar__item ${isDisabled ? 'calendar__day--disabled' : ''}`} onClick={() => handleSelectDate1(i)}>
           {i}
         </div>
       );

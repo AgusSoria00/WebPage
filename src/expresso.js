@@ -1,66 +1,109 @@
 const express = require('express');
 const path = require('path');
+const helmet = require('helmet');
+const cors = require('cors');
 const app = express();
+const { check, validationResult } = require('express-validator');
 const port = process.env.PORT || 3000;
 
 const controllerLogin = require('./components/controllerLogin');
+
+const { Pool } = require('pg');
+// Crear la conexión a la base de datos
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: 'localhost',
+  database: 'consultas',
+  password: process.env.DB_PASSWORD,
+  port: 5432,
+});
+
+pool.connect(error => {
+  if (error) {
+    console.error('Error conectando a la base de datos:', error);
+    return;
+  }
+  console.log('Conectado a la base de datos');
+});
+
 // Middleware para servir archivos estáticos desde la carpeta 'build'
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Middleware para manejar solicitudes JSON
 app.use(express.json());
 
+// Middleware para seguridad
+app.use(helmet());
+
+// Middleware para habilitar CORS
+app.use(cors());
+
+// Definir las rutas
+app.use('/login', controllerLogin);
+
 // Ruta para mostrar la página principal
 app.get('/', (req, res) => {
-  // Lógica para enviar la página principal
   res.send('¡Hola, mundo!');
 });
 
-// Ruta para manejar la programación de citas
-app.post('/api/programar-cita', (req, res) => {
-  const { nombre_apellido, telefono, correo_electronico, fecha, hora } = req.body;
-  // Lógica para insertar datos en la tabla "Citas"
-  // Por ejemplo:
-  // INSERT INTO Citas (nombre_apellido, telefono, correo_electronico, fecha, hora) VALUES (?, ?, ?, ?, ?)
-  res.send('Cita programada con éxito');
+// Middleware para manejar errores
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('¡Algo salió mal!');
 });
 
-// Ruta para manejar la sección de emergencia
-app.post('/api/emergencia', (req, res) => {
-  const { nombre_apellido, telefono, correo_electronico, consulta } = req.body;
-  // Lógica para insertar datos en la tabla "Consultas"
-  // Por ejemplo:
-  // INSERT INTO Consultas (nombre_apellido, telefono, correo_electronico, consulta) VALUES (?, ?, ?, ?)
-  res.send('Solicitud recibida, se le responderá a la brevedad');
-});
-
-app.get('/api/articulos', (req, res) => {
-    // Lógica para obtener y devolver la lista de artículos desde la base de datos
-    res.json(/* Lista de artículos */);
-});
-
-app.get('/api/videos', (req, res) => {
-    // Lógica para obtener y devolver la lista de videos desde el servidor
-    res.json(/* Lista de videos */);
-});
-  
-// Manejo de rutas para la aplicación React
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// Cierre de la conexión a la base de datos cuando el servidor se apaga
+process.on('SIGINT', () => {
+  pool.end();
+  console.log('Conexión a la base de datos cerrada');
+  process.exit();
 });
 
 // Iniciar el servidor
 app.listen(port, () => {
-  console.log(`El servidor está escuchando en http://localhost:${port}`);
+  console.log(`Servidor escuchando en el puerto ${port}`);
 });
 
-// Ruta para obtener información de citas y consultas (acceso solo para el administrador)
-app.get('/admin/pedidos', (req, res) => {
-  // Verificar la autenticación del usuario (administrador)
-  // Aquí debes implementar la lógica de autenticación.
-  // Si el usuario no está autenticado como administrador, redirigir o enviar un error 401
+// Ruta para manejar la programación de citas
+app.post('/api/citas', [
+  check('nombre_apellido').isLength({ min: 1 }),
+  check('telefono').isMobilePhone(),
+  check('correo_electronico').isEmail(),
+  check('fecha').isISO8601(),
+  check('hora').matches(/^([01]\d|2[0-3]):?([0-5]\d)$/),
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
 
-  // Lógica para obtener información de citas y consultas desde la base de datos
-  // y enviarla al cliente (React)
-  res.json({ citas: /* información de citas */ "", consultas: /* información de consultas */ ""});
+  const { nombre_apellido, telefono, correo_electronico, fecha, hora } = req.body;
+
+  try {
+    const result = await pool.query(
+      'INSERT INTO citas (nombre_apellido, telefono, correo_electronico, fecha, hora) VALUES ($1, $2, $3, $4, $5)',
+      [nombre_apellido, telefono, correo_electronico, fecha, hora]
+    );
+
+    res.status(200).send('Cita programada con éxito');
+  } catch (error) {
+    console.error('Error insertando la cita en la base de datos', error);
+    res.status(500).send('Error programando la cita');
+  }
+});
+
+// Ruta para obtener los datos de las consultas
+app.get('/api/consultas', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM urgencia');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error obteniendo las consultas:', error);
+    res.status(500).send('Error obteniendo las consultas');
+  }
+});
+
+// Ruta para manejar todas las rutas no manejadas
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../App.css';
 import Calendar from './Calendar.js';
+import axios from 'axios';
 
 
 const Modal = () => {
-  // Estados
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
@@ -13,6 +13,7 @@ const Modal = () => {
   const [step, setStep] = useState(1);
   const modalRef = useRef();
   const [selectedModality, setSelectedModality] = useState('');
+  const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
 
   // Funciones de manipulación de eventos
   const handleClick = () => {
@@ -44,7 +45,7 @@ const Modal = () => {
   };
 
   const handleDateClick = () => {
-    setDatePickerVisible(!datePickerVisible);
+    Calendar.handleSelectDate1();
   };
   
   useEffect(() => {
@@ -62,14 +63,49 @@ const Modal = () => {
     };
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Formulario enviado');
-    console.log('Fecha seleccionada:', selectedDate);
-    console.log('Hora seleccionada:', selectedTime);
-    handleClose();
-  };
+ // Añade la lógica de la ventana modal de confirmación en la función handleSubmit
+ async function handleSubmit(event) {
+  event.preventDefault();
 
+  if (step === 1) {
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const email = document.getElementById('email').value;
+    const fecha = selectedDate;
+    const hora = selectedTime;
+
+    // Imprime los datos del formulario
+    console.log({
+      nombre_apellido: nombre,
+      telefono,
+      correo_electronico: email,
+      fecha,
+      hora
+    });
+
+    try {
+      const response = await axios.post('/api/citas', {
+        nombre_apellido: nombre,
+        telefono,
+        correo_electronico: email,
+        fecha,
+        hora
+      });
+
+      // Imprime la respuesta del servidor
+      console.log(response);
+
+      if (response.status === 200) {
+        console.log('Cita programada con éxito');
+        setConfirmationModalVisible(true); // Muestra la ventana modal de confirmación
+      }
+    } catch (error) {
+      // Imprime cualquier error que ocurra durante la solicitud POST
+      console.error('Error programando la cita:', error);
+    }
+  }
+}
+  const availableHours = [...Array(5).keys()].map(i => i + 8).concat([...Array(6).keys()].map(i => i + 16));
   // Renderizado del componente
   return (
     <div>
@@ -118,24 +154,23 @@ const Modal = () => {
       <label htmlFor="fecha">Fecha</label>
     </div>
     <div className="campo-input">
-      <input type="text" name="fecha" id="fecha" readOnly onClick={handleDateClick} value={selectedDate} required />
-      {datePickerVisible && (
-        <div className="date-picker">
-          {/* Contenido del selector de fechas */}
-          <Calendar onSelectDate={handleSelectDate} onSelectTime={handleSelectTime} />
-        </div>
-      )}
+  {datePickerVisible && (
+    <div className="date-picker">
+      <Calendar onSelectDate={handleSelectDate} onSelectTime={handleSelectTime} />
     </div>
+  )}
+  <input type="date" name="fecha" id="fecha" required value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+</div>
     <div className="campo-label">
       <label htmlFor="hora">Hora</label>
     </div>
     <div className="campo-input">
-      <select name="hora" id="hora" required value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
-        {selectedDate && availableTimes.map((time) => (
-          <option key={time} value={time}>{time}:00</option>
-        ))}
-      </select>
-    </div>
+  <select name="hora" id="hora" required value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
+    {selectedDate && availableHours.map((time) => (
+      <option key={time} value={time}>{time}:00</option>
+    ))}
+  </select>
+</div>
     <div className="campo-label">
       <label htmlFor="modalidad">Seleccione la modalidad</label>
     </div>
@@ -156,9 +191,17 @@ const Modal = () => {
     Siguiente
   </button>
 ) : (
-  <input type="submit" value="Enviar" className="modal-submit" />
+  <input type="submit" value="Enviar" className="modal-submit" onClick={handleClick}/>
 )}
-
+{confirmationModalVisible && (
+  <div className="modal">
+    <div className="modal-content">
+      <h2>Cita programada con éxito</h2>
+      <p>Tu cita ha sido programada con éxito. Te enviaremos un correo electrónico con los detalles.</p>
+      <button onClick={() => setConfirmationModalVisible(false)}>Cerrar</button>
+    </div>
+  </div>
+)}
 <div className="btn-cerrar" onClick={step === 1 ? handleClose : () => setStep(step - 1)}>
   {step === 1 ? (
     <button type="button" className="modal-submit">

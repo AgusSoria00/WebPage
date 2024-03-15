@@ -18,6 +18,9 @@ import FontelloCss from './css/fontello.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import DatingMessages from './components/datingMessages';
 import Calendar from './components/Calendar';
+import ModalChat from './components/modalChat';
+import Modal2Chat from './components/modal2Chat';
+import ParentComponent from './components/ParentComponent';
 
 
 const App = () => {
@@ -38,24 +41,16 @@ const App = () => {
     .catch(error => console.error('Error:', error));
   };
   
-  // Manejar clic en el botón "icon-chat-empty"
-  const handleChatEmptyClick = () => {
-    // Lógica para enviar los datos de la cita al servidor
-    fetch('/api/programar-cita', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(/* datos de la cita */)
-    })
-    .then(response => response.text())
-    .then(data => {
-      console.log(data); // Mostrar respuesta del servidor
-      window.location.href = '/dating-messages'; 
-    })
-    .catch(error => console.error('Error:', error));
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modal2Visible, setModal2Visible] = useState(false);
+
+  const handleClick = () => {
+    setModalVisible(true);
   };
 
+  const handleClose = () => {
+    setModalVisible(false);
+  };
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false); // Estado para verificar si el usuario es administrador
 
@@ -77,6 +72,36 @@ const App = () => {
     checkAdminStatus();
   }, []);
 
+  const [data, setData] = useState([]);
+  const loadData = () => {
+    const loadedData = [
+      {
+        Cliente: 'Maria de los Angeles Herrera',
+        Fecha: '08/12/14',
+        Consulta: 'Consulta 1',
+        Teléfono: '123456789',
+        Correo: 'maria@example.com',
+        Hora: '10:00 AM',
+        Modalidad: 'Online'
+      },
+      {
+        Cliente: 'Jorge Luis Herrera',
+        Fecha: '09/12/14',
+        Consulta: 'Consulta 2',
+        Teléfono: '987654321',
+        Correo: 'jorge@example.com',
+        Hora: '11:00 AM',
+        Modalidad: 'Presencial'
+      }
+    ];
+    setData(loadedData);
+  };
+  const [modalComponent, setModalComponent] = useState(null);
+  const handleSetModalVisible = (state, data) => {
+    setModalVisible(state);
+    setData(data);
+    setModalComponent(state ? <Modal2Chat onClose={() => handleSetModalVisible(false, [])} data={data} /> : null);
+  };
   return (
     <Router>
     <div>
@@ -97,12 +122,13 @@ const App = () => {
   <div className="container">
     <input type="checkbox" id="btn-mas" />
     <div className="redes">
-    <div className="redes">
-    <Link to="#" className="icon-calendar"></Link>
-    <Link to="#" className="icon-attention" onClick={handleAttentionClick}></Link>
-    <Link to="/dating-messages" className="icon-chat-empty" onClick={handleChatEmptyClick}></Link>
+    <button className="icon-calendar"></button>
+    <button className="icon-attention" onClick={() => setModal2Visible(true)}></button>
+<button className="icon-chat-empty" onClick={() => setModalVisible(true)}></button>
+      {modalVisible && <ModalChat onClose={() => setModalVisible(false)} data={data} />}
+      {modal2Visible && <Modal2Chat onClose={() => setModal2Visible(false)} data={data} />}
+    <button onClick={loadData}>Cargar datos de prueba</button>
   </div>
-    </div>
     <div className="btn-mas">
       <label htmlFor="btn-mas" className="icon-plus-1"></label>
     </div>

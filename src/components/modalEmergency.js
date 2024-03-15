@@ -17,6 +17,29 @@ const CustomModal = ({ buttonLabel, modalTitle, formAction, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    // Datos del formulario
+    const data = {
+      nombre_apellido: 'Tu nombre',
+      telefono: 'Tu teléfono',
+      correo_electronico: 'Tu correo electrónico',
+      consulta: 'Tu consulta'
+    };
+  
+    // Enviar los datos del formulario al servidor
+    fetch('/api/emergencia', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  
     if (onSubmit) {
       onSubmit();
     }
