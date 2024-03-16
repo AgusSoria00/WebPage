@@ -3,6 +3,7 @@ import '../App.css';
 import Calendar from './Calendar.js';
 import axios from 'axios';
 
+
 const Modal = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -65,6 +66,7 @@ const Modal = () => {
  // Añade la lógica de la ventana modal de confirmación en la función handleSubmit
  async function handleSubmit(event) {
   event.preventDefault();
+  document.body.style.overflow = modalVisible ? 'auto' : 'hidden';
 
   if (step === 1) {
     const nombre = document.getElementById('nombre').value;
@@ -190,7 +192,9 @@ const Modal = () => {
     Siguiente
   </button>
 ) : (
-  <input type="submit" value="Enviar" className="modal-submit" onClick={handleClick}/>
+  <button type="submit" value="Enviar" className="modal-submit">
+    Enviar
+  </button>
 )}
 {confirmationModalVisible && (
   <div className="modal">
