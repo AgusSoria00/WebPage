@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.aaf994ed.css",
+    "main.js": "/static/js/main.c6bc5fa3.js",
+    "static/js/453.873e8afd.chunk.js": "/static/js/453.873e8afd.chunk.js",
+    "static/media/imagenFondo2.jpeg": "/static/media/imagenFondo2.dea65c4697fd9a98b5f3.jpeg",
+    "static/media/imagenFondo.jpeg": "/static/media/imagenFondo.44582892be0e354bc597.jpeg",
+    "static/media/fontello.eot": "/static/media/fontello.12cd5b54796274b6fd03.eot",
+    "static/media/fontello.ttf": "/static/media/fontello.69f95e0cc679df4af9db.ttf",
+    "static/media/fontello.woff": "/static/media/fontello.6b66a449842d4c83ad8e.woff",
+    "static/media/fontello.woff2": "/static/media/fontello.260e685cb446b532822f.woff2",
+    "static/media/fontello.svg": "/static/media/fontello.5614ffb2eaf67e03ee00.svg",
+    "index.html": "/index.html",
+    "main.aaf994ed.css.map": "/static/css/main.aaf994ed.css.map",
+    "main.c6bc5fa3.js.map": "/static/js/main.c6bc5fa3.js.map",
+    "453.873e8afd.chunk.js.map": "/static/js/453.873e8afd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aaf994ed.css",
+    "static/js/main.c6bc5fa3.js"
+  ]
+}
