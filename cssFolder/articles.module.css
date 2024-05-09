@@ -1,0 +1,42 @@
+#articles {
+    margin-bottom: 1vw;
+  }
+  #articles > h2{
+    font-size: 3vw;
+    padding-bottom: 4vw;
+  }
+  .articles-container {
+    width: 90%; 
+    max-height: 800px; 
+    overflow-y: auto; 
+    margin: 0 auto; 
+  }
+  
+  .articles {
+    width: 90%;
+    padding-right: 15px; 
+  }
+  
+  .articulo {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+  }
+  
+  .articulo img {
+    width: 100%;
+  }
+  
+  .articulo h3 {
+    margin-bottom: 10px;
+  }
+  
+  .articulo p {
+    margin-bottom: 20px;
+  }
+  
+  .articulo a {
+    color: blue;
+    text-decoration: none;
+  }
+  

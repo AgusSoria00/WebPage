@@ -1,0 +1,136 @@
+#btn-mas{
+    display: none;
+  }
+  .container{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+  }
+  .redes a, .btn-mas label{
+    display: block;
+    text-decoration: none;
+    background: #cc2b2b;
+    color: #fff;
+    width: 5vw;
+    height: 5vw;
+    line-height: 5vw;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
+    transition: all 500ms ease;
+    font-size: 2vw;
+  }
+  .redes a:hover{
+    background: #fff;
+    color: #cc2b2b;
+  }
+  .redes a{
+    margin-bottom: -15px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  #btn-mas:checked~ .redes a{
+    margin-bottom: 10px;
+    opacity: 1;
+    visibility: visible;
+  }
+  .btn-mas label{
+    cursor: pointer;
+    background: #f44141;
+    font-size: 2vw;
+  }
+  #btn-mas:checked ~ .btn-mas label{
+    transform: rotate(135deg);
+    font-size: 2vw;
+  }
+
+
+  @media (min-width: 1300px) {
+    .redes a,
+    .btn-mas label {
+      width: 6vw;
+      height: 6vw;
+      line-height: 6vw;
+      font-size: 25px;
+    }
+  }
+  @media screen and (min-width: 1300px) {
+    .redes a.icon-calendar,
+    .redes a.icon-attention,
+    .redes a.icon-chat-empty,
+    .btn-mas label.icon-plus-1 {
+      font-size: 2.5vw; 
+    }
+    .label .icon-plus-1 {
+      font-size: 2.5vw;
+    }
+    #btn-mas:checked ~ .btn-mas label{
+      font-size: 2.5vw;
+    }
+  }
+  @media (max-width: 1299px) {
+    .redes a.icon-calendar,
+    .redes a.icon-attention,
+    .redes a.icon-chat-empty,
+    .btn-mas label.icon-plus-1 {
+      font-size: 3vw; 
+    }
+    .label .icon-plus-1 {
+      font-size: 3vw;
+    }
+    #btn-mas:checked ~ .btn-mas label{
+      font-size: 3vw;
+    }
+    .redes a,
+    .btn-mas label {
+      width: 6vw;
+      height: 6vw;
+      line-height: 6vw;
+      font-size: 25px;
+    }
+  }
+  @media (max-width: 800px) {
+    .redes a.icon-calendar,
+    .redes a.icon-attention,
+    .redes a.icon-chat-empty,
+    .btn-mas label.icon-plus-1 {
+      font-size: 3vw; 
+    }
+    .label .icon-plus-1 {
+      font-size: 3vw;
+    }
+    #btn-mas:checked ~ .btn-mas label{
+      font-size: 3vw;
+    }
+    .redes a,
+    .btn-mas label {
+      width: 8vw;
+      height: 8vw;
+      line-height: 8vw;
+      font-size: 25px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .redes a.icon-calendar,
+    .redes a.icon-attention,
+    .redes a.icon-chat-empty,
+    .btn-mas label.icon-plus-1 {
+      font-size: 4vw; 
+    }
+    .label .icon-plus-1 {
+      font-size: 4vw;
+    }
+    #btn-mas:checked ~ .btn-mas label{
+      font-size: 4vw;
+    }
+    .redes a,
+    .btn-mas label {
+      width: 9vw;
+      height: 9vw;
+      line-height: 9vw;
+      font-size: 25px;
+    }
+  }
+

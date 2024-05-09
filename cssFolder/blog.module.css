@@ -1,0 +1,112 @@
+#blogFondo {
+    position: relative;
+    height: 100vh;
+    overflow: hidden; /* el desenfoque no se "derrame" */
+  }
+  #blogFondo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(../src/imagenes/imagenFondo.jpeg);
+    background-size: cover;
+    filter: blur(3px);
+    opacity: 0.85;
+    transition: filter 0.5s; 
+  }
+  #blogFondo:hover::before {
+    filter: blur(8px);
+    opacity: 0.75;
+  }
+  #blogFondo .perfil {
+    position: absolute;
+    z-index: 0; 
+  }
+  #blogFondo .perfil img {
+    width: 30vw; 
+    height: auto; 
+    border: 5px solid #fff; 
+    border-radius: 50%; 
+    transform: translateY(-80%);
+    object-fit: cover; /* mantiene la proporción original de la imagen */
+  }
+  #blogFondo .texto1 {
+    color: black;
+    font-size: 20px;
+    filter: blur(0px);
+    width: 50vw; 
+    font-family: 'Quicksand', sans-serif;
+    justify-content: center; 
+    transform: translate(70%, 20%);
+    word-spacing: 1px;
+    line-height: 1.5;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+
+  @media (min-width: 1400px) {
+    #blogFondo .perfil img {
+      width: 90%; 
+      max-width: 28vw; 
+      margin-top: -15vw; 
+      display: block; 
+      margin-left: 1%;
+    }
+  
+    #blogFondo .texto1 {
+      width: 65vw; 
+      transform: translate(42%, 0%); 
+      font-size: 33px;
+      margin-right: 2%; 
+    }
+  
+    #blogFondo h2 {
+      font-size: 43px;
+      padding-bottom: 2%;
+    }
+  }
+  @media (max-width: 768px) {
+    #blogFondo .perfil img {
+      display: none; 
+    }
+    #blogFondo .texto1 {
+      width: 80vw; 
+      transform: translate(0%, 35%);
+    }
+    #blogFondo h2 {
+      font-size: 25px;
+      padding-bottom: 5%;
+    }
+  }
+  @media (max-width: 576px) {
+    #blogFondo .perfil img {
+      display: none;
+    }
+    #blogFondo .texto1 {
+      width: 82vw; 
+      transform: translate(-4%, 25%); 
+      font-size: 16px;
+    }
+    #blogFondo h2 {
+      font-size: 17px;
+      
+    }
+  }
+  @media (max-width: 992px) {
+    #blogFondo .perfil img {
+      width: 35%;
+      transform: translate(0, -140%);
+    }
+    #blogFondo .texto1 {
+      position: relative;
+      top: -17%;
+      font-size: 17px;
+    }
+    #blogFondo h2 {
+      font-size: 28px;
+      padding-bottom: 5%;
+    }
+  }
+  
